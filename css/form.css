@@ -1,0 +1,81 @@
+/* -------------------------------------
+    Global
+------------------------------------- */
+
+* { box-sizing: border-box; }
+
+form {
+  margin: 2em;
+  width: 300px;
+}
+
+form > div {
+  margin: 2em 0;
+}
+
+form label {
+  color: grey;
+  font-size: 1em;
+}
+
+form input,
+form textarea {
+  /*border: 1px solid grey;*/
+  /*border-radius: 2px;*/
+  font-size: 1em;
+  padding: .3em;
+  width: 100%;
+}
+
+form input {
+  height: 2em;
+}
+
+
+/* -------------------------------------
+    PlaceholderLabel component
+------------------------------------- */
+
+.PlaceholderLabel,
+.PlaceholderLabel {
+
+}
+
+.PlaceholderLabel-label {
+  cursor: text;
+  display: none;
+  font-size: .8em;
+  left: 0;
+  position: absolute;
+  top: -1.2em;
+  /*transition:
+    font-size .1s ease,
+    top .1s ease;*/
+}
+
+.PlaceholderLabel-label.is-displayed {
+  display: block;
+}
+
+.PlaceholderLabel-wrapper {
+  position: relative;
+}
+
+
+
+
+
+.js .PlaceholderLabel label {
+
+}
+
+
+/*.PlaceholderLabel input[type=text]:focus ~ label,
+.PlaceholderLabel input[type=password]:focus ~ label,
+.PlaceholderLabel input[type=email]:focus ~ label,
+.PlaceholderLabel textarea:focus ~ label {
+  font-size: .7em;
+  top: -1.5em;
+}
+
+.PlaceholderLabel input[value=""] ~ label { color :red; }*/
