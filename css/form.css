@@ -20,8 +20,6 @@ form label {
 
 form input,
 form textarea {
-  /*border: 1px solid grey;*/
-  /*border-radius: 2px;*/
   font-size: 1em;
   padding: .3em;
   width: 100%;
@@ -36,46 +34,23 @@ form input {
     PlaceholderLabel component
 ------------------------------------- */
 
-.PlaceholderLabel,
-.PlaceholderLabel {
-
-}
-
 .PlaceholderLabel-label {
   cursor: text;
-  display: none;
   font-size: .8em;
   left: 0;
+  opacity: 0;
   position: absolute;
-  top: -1.2em;
-  /*transition:
-    font-size .1s ease,
-    top .1s ease;*/
+  top: -.8em;
+  transition:
+    opacity .1s ease,
+    top .1s ease-out;
 }
 
 .PlaceholderLabel-label.is-displayed {
-  display: block;
+  opacity: 1;
+  top: -1.2em;
 }
 
 .PlaceholderLabel-wrapper {
   position: relative;
 }
-
-
-
-
-
-.js .PlaceholderLabel label {
-
-}
-
-
-/*.PlaceholderLabel input[type=text]:focus ~ label,
-.PlaceholderLabel input[type=password]:focus ~ label,
-.PlaceholderLabel input[type=email]:focus ~ label,
-.PlaceholderLabel textarea:focus ~ label {
-  font-size: .7em;
-  top: -1.5em;
-}
-
-.PlaceholderLabel input[value=""] ~ label { color :red; }*/
