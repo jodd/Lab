@@ -3,7 +3,8 @@
 ----------------------------------------------------------------------------- */
 ;(function() {
 
-  function manageLabel() {
+  // Private
+  function _manageLabel() {
     if (this.el.value) {
       this.$label.addClass('is-displayed');
     } else {
@@ -15,7 +16,7 @@
   function placeholderLabel(element, options) {
     this.el = element;
     this.$el = $(this.el);
-    this.$label = $('label[for=' + this.el.id + ']').addClass('PlaceholderLabel-label');
+    this.$label = $('label[for=' + this.el.id + ']');
 
     if (!this.$label.length) {
       if (this.el.placeholder) {
@@ -29,16 +30,16 @@
     this.init();
   }
 
-  // Public functions
+  // Public
   placeholderLabel.prototype = {
     init: function() {
       var self = this;
 
       this.$el.add(this.$label).wrapAll('<div class="PlaceholderLabel-wrapper" />');
 
-      this.$el.on('keyup', manageLabel.bind(this));
+      this.$el.on('keyup', _manageLabel.bind(this));
 
-      manageLabel.call(this);
+      _manageLabel.call(this);
     }
   };
 
