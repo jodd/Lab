@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>Input text snippet</title>
+    <link rel="stylesheet" type="text/css" href="css/normalize.min.css">
+    <link rel="stylesheet" type="text/css" href="css/form.css">
+    <script src="bower_components/modernizr/modernizr.js"></script>
+  </head>
+
+  <body>
+    <h1>Lab</h1>
+    <section>
+      <h2>Placeholder Label</h2>
+      <form action="">
+        <div>
+          <input type="text" id="input-1" placeholder="Without label" class="PlaceholderLabel">
+        </div>
+        <div>
+          <label for="input-2" class="PlaceholderLabel-label">Without placeholder</label>
+          <input type="text" id="input-2" class="PlaceholderLabel">
+        </div>
+        <div>
+          <label for="input-3" class="PlaceholderLabel-label">With label...</label>
+          <input type="text" id="input-3" placeholder="...and placeholder" class="PlaceholderLabel">
+        </div>
+        <div>
+          <input type="password" id="input-4" placeholder="Password" class="PlaceholderLabel">
+        </div>
+        <div>
+          <input type="email" id="input-5" placeholder="Email" class="PlaceholderLabel">
+        </div>
+        <div>
+          <textarea id="message" placeholder="Textarea" class="PlaceholderLabel"></textarea>
+        </div>
+      </form>
+    </section>
+
+    <script data-main="js/main.js" src="bower_components/requirejs/require.js"></script>
+  </body>
+</html>

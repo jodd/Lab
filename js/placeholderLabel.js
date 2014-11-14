@@ -1,7 +1,10 @@
 /* -----------------------------------------------------------------------------
   placeholderLabel
 ----------------------------------------------------------------------------- */
-;(function() {
+
+define("placeholderLabel", function() {
+
+  "use strict";
 
   // Private
   function _manageLabel() {
@@ -20,25 +23,20 @@
 
     if (!this.$label.length) {
       if (this.el.placeholder) {
-        this.$label = $('<label class="PlaceholderLabel-label" for="'+ this.el.id +'">' + this.el.placeholder + '</label>')
-          .insertBefore(this.el);
+        this.$label = $('<label class="PlaceholderLabel-label" for="' + this.el.id + '">' + this.el.placeholder + '</label>').insertBefore(this.el);
       } else return;
     }
 
-    this.el.placeholder = this.el.placeholder || this.$label.text();
-
+    this.el.placeholder = this.el.placeholder || this.$label.text();
     this.init();
   }
 
   // Public
   placeholderLabel.prototype = {
-    init: function() {
+    init: function() {
       var self = this;
-
       this.$el.add(this.$label).wrapAll('<div class="PlaceholderLabel-wrapper" />');
-
       this.$el.on('keyup', _manageLabel.bind(this));
-
       _manageLabel.call(this);
     }
   };
@@ -50,4 +48,4 @@
     });
   };
 
-})();
+});
