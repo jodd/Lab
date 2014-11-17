@@ -1,36 +1,4 @@
 /* -------------------------------------
-    Global
-------------------------------------- */
-
-* { box-sizing: border-box; }
-
-form {
-  margin: 2em;
-  width: 300px;
-}
-
-form > div {
-  margin: 2em 0;
-}
-
-form label {
-  color: grey;
-  font-size: 1em;
-}
-
-form input,
-form textarea {
-  font-size: 1em;
-  padding: .3em;
-  width: 100%;
-}
-
-form input {
-  height: 2em;
-}
-
-
-/* -------------------------------------
     PlaceholderLabel component
 ------------------------------------- */
 
