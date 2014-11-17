@@ -8,6 +8,8 @@
   "private": true,
   "dependencies": {
     "modernizr": "~2.8.3",
-    "requirejs": "~2.1.15"
-  }
+    "requirejs": "~2.1.15",
+    "jquery": "1.x"
+  },
+  "devDependencies": {}
 }
