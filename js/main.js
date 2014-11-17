@@ -11,11 +11,11 @@ requirejs.config({
 
 //
 
-require(['jquery', 'placeholderLabel'], function() {
+require(['jquery', 'placeholderLabel'], function () {
 
   "use strict";
 
-  $(document).ready(function() {
+  $(document).ready(function () {
     $('.PlaceholderLabel').placeholderLabel();
   });
 
