@@ -31,6 +31,7 @@ module.exports = function (grunt) {
     //   }
     // },
     sass: {
+      files: 'scss/*.scss',
       dist: {
         src: 'scss/main.scss',
         dest: 'css/main.css'
@@ -73,7 +74,7 @@ module.exports = function (grunt) {
     },
     watch: {
       sass: {
-        files: '<%= sass.dist.src %>',
+        files: '<%= sass.files %>',
         tasks: ['sass:dist']
       },
       gruntfile: {
