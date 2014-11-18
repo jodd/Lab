@@ -1,0 +1,97 @@
+
+/* =============================================================================
+    Tooltip component
+============================================================================= */
+
+$textcolor: white;
+$bgcolor: hsl(0, 0, 40%);
+
+// .Tooltip:before, .Tooltip:after { display: block !important; }
+
+.Tooltip {
+  position: relative;
+  &:before { // tooltip box
+    background-color: $bgcolor;
+    border-radius: 3px;
+    bottom: 100%;
+    color: $textcolor;
+    content: attr(aria-label);
+    display: none;
+    font: .8rem/1 Helvetica, sans-serif;
+    right: 50%;
+    margin-bottom: 12px;
+    padding: .4em .6em;
+    position: absolute;
+    text-align: center;
+    transform: translateX(50%);
+    white-space: pre;
+    word-wrap: break-word;
+    z-index: 1000;
+  }
+  &:after { // arrow
+    border: 6px solid transparent;
+    border-top-color: $bgcolor;
+    bottom: 100%;
+    content: "";
+    display: none;
+    right: 50%;
+    margin-right: -6px;
+    position: absolute;
+    z-index: 1001;
+  }
+  &:focus, &:hover {
+    &:before, &:after { display: block; }
+  }
+}
+
+.Tooltip-e {
+  @extend .Tooltip;
+  &:before {
+    bottom: 50%;
+    right: auto;
+    left: 100%;
+    margin-bottom: 0;
+    margin-left: 12px;
+    transform: translateY(50%);
+  }
+  &:after {
+    border-color: transparent $bgcolor transparent transparent;
+    bottom: 50%;
+    right: -12px;
+    margin-right: 0;
+    margin-bottom: -6px;
+  }
+}
+
+.Tooltip-w {
+  @extend .Tooltip;
+  &:before {
+    bottom: 50%;
+    right: 100%;
+    margin-bottom: 0;
+    margin-right: 12px;
+    transform: translateY(50%);
+  }
+  &:after {
+    border-color: transparent transparent transparent $bgcolor;
+    bottom: 50%;
+    left: -12px;
+    margin-right: 0;
+    margin-bottom: -6px;
+  }
+}
+
+.Tooltip-s {
+  @extend .Tooltip;
+  &:before {
+    bottom: auto;
+    top: 100%;
+    margin-bottom: 0;
+    margin-top: 12px;
+  }
+  &:after {
+    border-color: transparent transparent $bgcolor;
+    bottom: auto;
+    top: 100%;
+  }
+}
