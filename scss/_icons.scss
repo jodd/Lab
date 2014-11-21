@@ -1,0 +1,60 @@
+
+/* =============================================================================
+    Icons
+============================================================================= */
+
+
+/*
+ * Usage : add a data-icon attribute to an HTML element.
+ *
+ * <a href="#" data-icon="&#xe600;"> Icon with text</a>
+ *
+ *
+ * <a href="#" data-icon="&#xe600;">
+ *   <span class="visuallyhidden">Icon alone</span>
+ * </a>
+ *
+ *
+ * Accessibility & Screen Readers :
+ *
+ * It seems we can get rid of the aria-hidden="true" attribute since we use
+ * PUA for the encoding of glyphs.
+ * Resource : http://nimbupani.com/markup-free-icon-fonts-with-unicode-range.html
+ *
+ * However, it's not what it's said here :
+ * http://css-tricks.com/html-for-icon-font-usage/
+ *
+ * -------------------------------------
+ *
+ * Glyphs :
+ *
+ * - e600 : link
+ * - e601 : comment
+ *
+ */
+
+
+@font-face {
+  font-family: 'icons';
+  src: url("../fonts/icons/icomoon.eot?kzx10i");
+  src: url("../fonts/icons/icomoon.eot?#iefixkzx10i") format("embedded-opentype"),
+    url("../fonts/icons/icomoon.woff?kzx10i") format("woff"),
+    url("../fonts/icons/icomoon.ttf?kzx10i") format("truetype"),
+    url("../fonts/icons/icomoon.svg?kzx10i#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+[data-icon]:before {
+  font-family: 'icons';
+  content: attr(data-icon);
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

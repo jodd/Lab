@@ -1,36 +1,58 @@
 
-/* =============================================================================
-    Global
-============================================================================= */
+/* ==========================================================================
+   Imports
+   ========================================================================== */
 
-* { box-sizing: border-box; }
-
-html { font-size: 100%; }
-
-body { font-size: 0.75em; }
-
-
-/* =============================================================================
-    Imports
-============================================================================= */
-
-@import "placeholderLabel";
-@import "tooltip";
+@import "../bower_components/normalize.css/normalize.css",
+        "base",
+        "placeholderLabel",
+        "tooltip",
+        "icons";
 
 
-/* =============================================================================
-    Styles
-============================================================================= */
+/* ==========================================================================
+   Styles
+   ========================================================================== */
 
-
-/* PlaceholderLabel section
------------------------------------------------------------------------------ */
-
-body {
-  margin: 0 auto;
-  width: 80%;
-  max-width: 1024px;
+html, body {
+  height: 100%;
+  overflow-x: hidden;
 }
+
+.wrapper {
+  background-color: white;
+  margin: 0 auto;
+  padding: 1em 2em;
+  width: 80%;
+  max-width: 1280px;
+  min-height: 100%;
+}
+
+/*
+   Header
+   -------------------------------------------------------------------------- */
+
+.Header {
+  background-color: hsla(30, 100, 50%, .6);
+  font-size: 2em;
+  position: relative;
+  &:before, &:after {
+    content: "";
+    background-color: hsla(30, 100, 50%, .6);
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 9999px;
+  }
+  &:before { right: 100%; }
+  &:after { left: 100%; }
+  h1 { margin: 0; }
+}
+
+/*
+   PlaceholderLabel section
+   -------------------------------------------------------------------------- */
 
 form {
   margin: 2em;
@@ -57,6 +79,50 @@ form input {
   height: 2em;
 }
 
+/*
+   Tooltip section
+   -------------------------------------------------------------------------- */
 
-/* Tooltip section
------------------------------------------------------------------------------ */
+
+/*
+   Anchors
+   -------------------------------------------------------------------------- */
+
+h2 {
+  position: relative;
+}
+
+.Anchor {
+  font-size: .8em;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 100%;
+  padding: .2em .4em;
+  opacity: 0;
+  text-decoration: none;
+  &:focus, &:hover,
+  h1:focus &, h1:hover &,
+  h2:focus &, h2:hover & { opacity: 1; }
+}
+
+
+@import "helpers";
+
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+  /* Style adjustments for viewports that meet the condition */
+}
+
+@media print, (-o-min-device-pixel-ratio: 5 / 4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+  /* Style adjustments for high resolution devices */
+}
+
+
+@import "print";
