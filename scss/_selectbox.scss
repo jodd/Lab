@@ -1,0 +1,90 @@
+/* ==========================================================================
+   Selectbox component
+   ========================================================================== */
+
+/*
+   Style
+   -------------------------------------------------------------------------- */
+
+$bordercolor: hsl(0, 0, 80);
+
+
+.Selectbox-control {
+  border: 1px solid $bordercolor;
+  padding: 0 .3em;
+}
+
+.Selectbox-list {
+  background-color: white;
+  border: 1px solid $bordercolor;
+  border-top: 0;
+}
+
+.Selectbox-optgroup {
+  font-style: italic;
+  font-weight: bold;
+  padding: 0 .3em;
+}
+
+.Selectbox-option a {
+  padding: 0 .3em;
+  transition:
+    color .1s,
+    background-color .1s;
+  &:focus, &:hover, &:active {
+    background-color: hsl(0, 0, 40);
+    color: white;
+  }
+}
+
+.Selectbox-optgroup ~ .Selectbox-option a {
+  padding: 0 .3em 0 1.2em;
+}
+
+
+/*
+   Behavior
+   -------------------------------------------------------------------------- */
+
+.Selectbox {
+  cursor: default;
+  position: relative;
+}
+
+.Selectbox-select {
+  @extend .visuallyhidden;
+}
+
+.Selectbox-control {
+  display: block;
+  z-index: 100;
+}
+
+.Selectbox-list {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    visibility 0s linear .1s,
+    opacity .1s linear;
+  z-index: 101;
+  .Selectbox.is-open & {
+    visibility: visible;
+    opacity: 1;
+    transition-delay: 0s;
+  }
+}
+
+.Selectbox-optgroup {
+
+}
+
+.Selectbox-option a {
+  display: block;
+}

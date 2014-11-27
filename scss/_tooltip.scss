@@ -47,7 +47,7 @@ $Tooltip-bgcolor: hsl(0, 0, 40%);
 
 .Tooltip-e {
   @extend .Tooltip;
-  &:before {
+  &:before { // tooltip box
     right: auto;
     bottom: 50%;
     left: 100%;
@@ -56,7 +56,7 @@ $Tooltip-bgcolor: hsl(0, 0, 40%);
     -webkit-transform: translateY(50%);
     transform: translateY(50%);
   }
-  &:after {
+  &:after { // arrow
     border-color: transparent $Tooltip-bgcolor transparent transparent;
     top: 50%;
     right: -6px;
@@ -67,14 +67,14 @@ $Tooltip-bgcolor: hsl(0, 0, 40%);
 
 .Tooltip-w {
   @extend .Tooltip;
-  &:before {
+  &:before { // tooltip box
     right: 100%;
     bottom: 50%;
     margin-right: 6px;
     margin-bottom: 0;
     transform: translateY(50%);
   }
-  &:after {
+  &:after { // arrow
     border-color: transparent transparent transparent $Tooltip-bgcolor;
     top: 50%;
     left: -6px;
@@ -85,13 +85,13 @@ $Tooltip-bgcolor: hsl(0, 0, 40%);
 
 .Tooltip-s {
   @extend .Tooltip;
-  &:before {
+  &:before { // tooltip box
     top: 100%;
     bottom: auto;
     margin-top: 6px;
     margin-bottom: 0;
   }
-  &:after {
+  &:after { // arrow
     border-color: transparent transparent $Tooltip-bgcolor;
     top: auto;
     bottom: -6px;
