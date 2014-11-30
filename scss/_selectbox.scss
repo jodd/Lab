@@ -12,6 +12,14 @@ $bordercolor: hsl(0, 0, 80);
 .Selectbox-control {
   border: 1px solid $bordercolor;
   padding: 0 .3em;
+  position: relative;
+  &:before {
+    font-size: .8em;
+    line-height: 1.8em;
+    position: absolute;
+    top: 0;
+    right: .1em;
+  }
 }
 
 .Selectbox-list {
@@ -27,7 +35,8 @@ $bordercolor: hsl(0, 0, 80);
 }
 
 .Selectbox-option a {
-  padding: 0 .3em;
+  position: relative;
+  padding: 0 .3em 0 1.2em;
   transition:
     color .1s,
     background-color .1s;
@@ -35,10 +44,14 @@ $bordercolor: hsl(0, 0, 80);
     background-color: hsl(0, 0, 40);
     color: white;
   }
-}
-
-.Selectbox-optgroup ~ .Selectbox-option a {
-  padding: 0 .3em 0 1.2em;
+  &:before {
+    display: none;
+    font-size: .6em;
+    position: absolute;
+    top: .5em;
+    left: .4em;
+  }
+  &.is-selected:before { display: block; }
 }
 
 
