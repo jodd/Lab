@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Selectbox component
+   Listbox component
    ========================================================================== */
 
 /*
@@ -8,8 +8,12 @@
 
 $bordercolor: hsl(0, 0, 80);
 
+[role="listbox"]:focus {
+  outline: 0;
+  box-shadow: 0 0 3px hsla(208, 70, 70, 1);
+}
 
-.Selectbox-control {
+[role="listbox"] > span {
   border: 1px solid $bordercolor;
   padding: 0 .3em;
   position: relative;
@@ -22,25 +26,27 @@ $bordercolor: hsl(0, 0, 80);
   }
 }
 
-.Selectbox-list {
+[role="listbox"] > ul,
+[role="listbox"] > ol {
   background-color: white;
   border: 1px solid $bordercolor;
   border-top: 0;
 }
 
-.Selectbox-optgroup {
+
+[role="listbox"] [role="separator"] {
   font-style: italic;
   font-weight: bold;
   padding: 0 .3em;
 }
 
-.Selectbox-option a {
+[role="listbox"] [role="option"] {
   position: relative;
   padding: 0 .3em 0 1.2em;
   transition:
     color .1s,
     background-color .1s;
-  &:focus, &:hover, &:active {
+  &:focus, &:hover {
     background-color: hsl(0, 0, 40);
     color: white;
   }
@@ -51,7 +57,7 @@ $bordercolor: hsl(0, 0, 80);
     top: .5em;
     left: .4em;
   }
-  &.is-selected:before { display: block; }
+  &[aria-selected="true"]:before { display: block; }
 }
 
 
@@ -59,21 +65,22 @@ $bordercolor: hsl(0, 0, 80);
    Behavior
    -------------------------------------------------------------------------- */
 
-.Selectbox {
+[role="listbox"] {
   cursor: default;
   position: relative;
 }
 
-.Selectbox-select {
+[role="listbox"] + select {
   @extend .visuallyhidden;
 }
 
-.Selectbox-control {
+[role="listbox"] > span {
   display: block;
   z-index: 100;
 }
 
-.Selectbox-list {
+[role="listbox"] > ul,
+[role="listbox"] > ol {
   position: absolute;
   top: 100%;
   right: 0;
@@ -87,17 +94,9 @@ $bordercolor: hsl(0, 0, 80);
     visibility 0s linear .1s,
     opacity .1s linear;
   z-index: 101;
-  .Selectbox.is-open & {
+  &[aria-hidden="false"] {
     visibility: visible;
     opacity: 1;
     transition-delay: 0s;
   }
-}
-
-.Selectbox-optgroup {
-
-}
-
-.Selectbox-option a {
-  display: block;
 }

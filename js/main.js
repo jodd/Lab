@@ -15,14 +15,14 @@ require.config({
 require([
   'jquery',
   'placeholderLabel',
-  'selectbox'
+  'listbox'
 ], function ($) {
 
   "use strict";
 
   $(document).ready(function () {
     $('.PlaceholderLabel').placeholderLabel();
-    $('.Selectbox-select').selectbox();
+    $('select').listbox();
   });
 
 });
