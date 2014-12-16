@@ -56,7 +56,8 @@ module.exports = function (grunt) {
           $: false,
           requirejs: false,
           require: false,
-          define: false
+          define: false,
+          console: false
         }
       },
       gruntfile: {

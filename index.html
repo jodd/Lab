@@ -22,26 +22,58 @@
           Placeholder Label
         </h2>
         <form action="">
-          <div>
-            <input type="text" id="input-1" placeholder="Without label" class="PlaceholderLabel">
-          </div>
-          <div>
-            <label for="input-2" class="PlaceholderLabel-label">Without placeholder</label>
-            <input type="text" id="input-2" class="PlaceholderLabel">
-          </div>
-          <div>
-            <label for="input-3" class="PlaceholderLabel-label">With label...</label>
-            <input type="text" id="input-3" placeholder="...and placeholder" class="PlaceholderLabel">
-          </div>
-          <div>
-            <input type="password" id="input-4" placeholder="Password" class="PlaceholderLabel">
-          </div>
-          <div>
-            <input type="email" id="input-5" placeholder="Email" class="PlaceholderLabel">
-          </div>
-          <div>
-            <textarea id="message" placeholder="Textarea" class="PlaceholderLabel"></textarea>
-          </div>
+          <fieldset>
+            <div>
+              <input type="text" id="input-1" placeholder="Without label" class="PlaceholderLabel">
+            </div>
+            <div>
+              <label for="input-2" class="PlaceholderLabel-label">Without placeholder</label>
+              <input type="text" id="input-2" class="PlaceholderLabel">
+            </div>
+            <div>
+              <label for="input-3" class="PlaceholderLabel-label">With label...</label>
+              <input type="text" id="input-3" placeholder="...and placeholder" class="PlaceholderLabel">
+            </div>
+            <div>
+              <input type="password" id="input-4" placeholder="Password" class="PlaceholderLabel">
+            </div>
+          </fieldset>
+          <fieldset>
+            <div>
+              <label for="select-1">Choose option</label>
+              <select id="select-1">
+                <option value="option-1">Option 1</option>
+                <option value="option-2">Option 2</option>
+                <option value="option-3">Option 3</option>
+                <option value="option-4">Option 4</option>
+                <option value="option-5">Option 5</option>
+                <option value="option-6">flk,l kzelfk z</option>
+                <option value="option-8">gez eknz ek zen</option>
+                <option value="option-7">gzkej jez jen</option>
+              </select>
+            </div>
+            <div>
+              <label for="select-2">Choose option</label>
+              <select id="select-2">
+                <optgroup label="Group 1">
+                  <option value="option-1-1">Option 1.1</option>
+                  <option value="option-1-2">Option 1.2</option>
+                </optgroup>
+                <optgroup label="Group 2">
+                  <option value="option-2-1">Option 2.1</option>
+                  <option value="option-2-2">Option 2.2</option>
+                  <option value="option-2-3">Option 2.3</option>
+                  <option value="option-2-4">Option 2.4</option>
+                </optgroup>
+              </select>
+            </div>
+            <div>
+              <input type="email" id="input-5" placeholder="Email" class="PlaceholderLabel">
+            </div>
+            <div>
+              <textarea id="message" placeholder="Textarea" class="PlaceholderLabel"></textarea>
+            </div>
+          </fieldset>
         </form>
       </section>
 

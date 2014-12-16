@@ -8,7 +8,8 @@
         "base",
         "placeholderLabel",
         "tooltip",
-        "icons";
+        "icons",
+        "listbox";
 
 
 /* ==========================================================================
@@ -34,21 +35,22 @@ html, body {
    -------------------------------------------------------------------------- */
 
 .Header {
-  background-color: hsla(30, 100, 50%, .6);
   font-size: 2em;
   position: relative;
-  &:before, &:after {
+  &:before {
     content: "";
-    background-color: hsla(30, 100, 50%, .6);
+    background-color: hsla(30, 100, 50%, .5);
     display: block;
     position: absolute;
     top: 0;
+    right: -9999px;
     bottom: 0;
-    width: 9999px;
+    left: -9999px;
   }
-  &:before { right: 100%; }
-  &:after { left: 100%; }
-  h1 { margin: 0; }
+  h1 {
+    margin: 0;
+    position: relative;
+  }
 }
 
 /*
@@ -56,28 +58,36 @@ html, body {
    -------------------------------------------------------------------------- */
 
 form {
-  margin: 2em;
-  width: 300px;
-}
-
-form > div {
-  margin: 2em 0;
-}
-
-form label {
-  color: grey;
-  font-size: 1em;
-}
-
-form input,
-form textarea {
-  font-size: 1em;
-  padding: .3em;
-  width: 100%;
-}
-
-form input {
-  height: 2em;
+  @extend .clearfix;
+  // margin: 2em;
+  // width: 300px;
+  fieldset {
+    float: left;
+    width: 45%;
+    margin-left: 10%;
+    &:first-child { margin-left: 0; }
+    > div {
+      margin: 1.5em 0;
+    }
+  }
+  label, input, textarea, select {
+    font-size: 1em;
+  }
+  label {
+    color: grey;
+  }
+  input,
+  textarea {
+    padding: .3em;
+    width: 100%;
+    // &:focus {
+    //   box-shadow: 0 0 3px hsla(208, 70, 70, 1);
+    // }
+  }
+  input {
+    height: 2em;
+  }
+  select { width: 100%; }
 }
 
 /*
