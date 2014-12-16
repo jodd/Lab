@@ -28,8 +28,10 @@
  *
  * Glyphs :
  *
- * - e600 : link
- * - e601 : comment
+ * - \e600 : link (anchor)
+ * - \e601 : comment
+ * - \e602 : menu
+ * - \e603 : checkmark
  *
  */
 
@@ -45,16 +47,26 @@
   font-style: normal;
 }
 
-[data-icon]:before {
+@mixin icon($glyph) {
   font-family: 'icons';
-  content: attr(data-icon);
+  content: $glyph;
   speak: none;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
   text-transform: none;
   line-height: 1;
+  padding-right: .125em;
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+[data-icon]:before {
+  @include icon(attr(data-icon));
+}
+
+[href^="#"]:before {
+  @include icon("\e600");
+  font-size: .8em;
 }
