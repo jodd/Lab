@@ -3,11 +3,21 @@
     Tooltip component
 ============================================================================= */
 
+
+/*
+ * Usage : add an aria-label attribute to an HTML element.
+ *
+ * <span aria-label="The content of my tooltip">Tooltiped text</span>
+ *
+ */
+
+
 $Tooltip-textcolor: white;
 $Tooltip-bgcolor: hsl(0, 0, 40%);
 
 // .Tooltip:before, .Tooltip:after { display: block !important; }
 
+[aria-label],
 .Tooltip {
   position: relative;
   &:before { // tooltip box
@@ -17,6 +27,10 @@ $Tooltip-bgcolor: hsl(0, 0, 40%);
     color: $Tooltip-textcolor;
     content: attr(aria-label);
     display: none;
+    // display: inline-block;
+    // opacity: 0;
+    // visibility: hidden;
+    // transition: opacity .2s ease, visibility 0s linear .2s;
     font: .8rem/1 Helvetica, sans-serif;
     right: 50%;
     margin-bottom: 6px;
@@ -42,6 +56,7 @@ $Tooltip-bgcolor: hsl(0, 0, 40%);
   }
   &:focus, &:hover, &:active {
     &:before, &:after { display: inline-block; }
+    // &:before, &:after { opacity: 1; visibility: visible; transition: opacity .2s ease, visibility 0s linear 0s; }
   }
 }
 
