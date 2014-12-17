@@ -102,13 +102,12 @@ h2 {
   position: relative;
 }
 
-.Anchor {
-  font-size: .8em;
+[href^="#"] {
   display: block;
   position: absolute;
   top: 0;
   right: 100%;
-  padding: .2em .4em;
+  padding: 0 .2em;
   opacity: 0;
   text-decoration: none;
   &:focus, &:hover,
