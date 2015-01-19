@@ -1,0 +1,557 @@
+@import url(../bower_components/normalize.css/normalize.css);
+/* ==========================================================================
+   Imports
+   ========================================================================== */
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+/*
+ * Hide visually and from screen readers:
+ * http://juicystudio.com/article/screen-readers-display-none.php
+ */
+.hidden {
+  display: none !important;
+  visibility: hidden; }
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ */
+.visuallyhidden, [role="listbox"] + select {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px; }
+
+/*
+ * Extends the .visuallyhidden class to allow the element
+ * to be focusable when navigated to via the keyboard:
+ * https://www.drupal.org/node/897638
+ */
+.visuallyhidden.focusable:active, [role="listbox"] + select.focusable:active, .visuallyhidden.focusable:focus, [role="listbox"] + select.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto; }
+
+/*
+ * Hide visually and from screen readers, but maintain layout
+ */
+.invisible {
+  visibility: hidden; }
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+.clearfix:before, form:before, .clearfix:after, form:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */ }
+
+.clearfix:after, form:after {
+  clear: both; }
+
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+* {
+  box-sizing: border-box; }
+
+html {
+  color: #222;
+  background-color: #e6e6e6;
+  font-size: 1em;
+  line-height: 1.4; }
+
+/*
+ * Remove text-shadow in selection highlight:
+ * https://twitter.com/miketaylr/status/12228805301
+ *
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none; }
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none; }
+
+/*
+ * A better looking default horizontal rule
+ */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0; }
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+audio, canvas, iframe, img, svg, video {
+  vertical-align: middle; }
+
+/*
+ * Remove default fieldset styles.
+ */
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0; }
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+textarea {
+  resize: vertical; }
+
+/* ==========================================================================
+   Browser Upgrade Prompt
+   ========================================================================== */
+.browserupgrade {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0; }
+
+/* -------------------------------------
+    PlaceholderLabel component
+------------------------------------- */
+.PlaceholderLabel-label {
+  cursor: text;
+  font-size: 0.8em;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: -0.8em;
+  transition: opacity 0.1s ease, top 0.1s ease-out; }
+
+.PlaceholderLabel-label.is-displayed {
+  opacity: 1;
+  top: -1.2em; }
+
+.PlaceholderLabel-wrapper {
+  position: relative; }
+
+/* =============================================================================
+    Tooltip component
+============================================================================= */
+/*
+ * Usage : add an aria-label attribute to an HTML element.
+ *
+ * <span aria-label="The content of my tooltip">Tooltiped text</span>
+ *
+ */
+[aria-label], .Tooltip, .Tooltip-e, .Tooltip-w, .Tooltip-s {
+  position: relative; }
+  [aria-label]:before, .Tooltip:before, .Tooltip-e:before, .Tooltip-w:before, .Tooltip-s:before {
+    background-color: #666666;
+    border-radius: 3px;
+    bottom: 100%;
+    color: white;
+    content: attr(aria-label);
+    display: none;
+    font: .8rem/1 Helvetica, sans-serif;
+    right: 50%;
+    margin-bottom: 6px;
+    padding: 0.4em 0.6em;
+    position: absolute;
+    text-align: center;
+    -webkit-transform: translateX(50%);
+    transform: translateX(50%);
+    white-space: pre;
+    word-wrap: break-word;
+    z-index: 1000; }
+  [aria-label]:after, .Tooltip:after, .Tooltip-e:after, .Tooltip-w:after, .Tooltip-s:after {
+    position: absolute;
+    display: none;
+    content: "";
+    border: 6px solid transparent;
+    border-top-color: #666666;
+    top: -6px;
+    right: 50%;
+    margin-right: -6px;
+    z-index: 1001; }
+  [aria-label]:focus:before, [aria-label]:focus:after, [aria-label]:hover:before, [aria-label]:hover:after, [aria-label]:active:before, [aria-label]:active:after, .Tooltip:focus:before, .Tooltip-e:focus:before, .Tooltip-w:focus:before, .Tooltip-s:focus:before, .Tooltip:focus:after, .Tooltip-e:focus:after, .Tooltip-w:focus:after, .Tooltip-s:focus:after, .Tooltip:hover:before, .Tooltip-e:hover:before, .Tooltip-w:hover:before, .Tooltip-s:hover:before, .Tooltip:hover:after, .Tooltip-e:hover:after, .Tooltip-w:hover:after, .Tooltip-s:hover:after, .Tooltip:active:before, .Tooltip-e:active:before, .Tooltip-w:active:before, .Tooltip-s:active:before, .Tooltip:active:after, .Tooltip-e:active:after, .Tooltip-w:active:after, .Tooltip-s:active:after {
+    display: inline-block; }
+
+.Tooltip-e:before {
+  right: auto;
+  bottom: 50%;
+  left: 100%;
+  margin-bottom: 0;
+  margin-left: 6px;
+  -webkit-transform: translateY(50%);
+  transform: translateY(50%); }
+.Tooltip-e:after {
+  border-color: transparent #666666 transparent transparent;
+  top: 50%;
+  right: -6px;
+  margin-top: -6px;
+  margin-right: 0; }
+
+.Tooltip-w:before {
+  right: 100%;
+  bottom: 50%;
+  margin-right: 6px;
+  margin-bottom: 0;
+  transform: translateY(50%); }
+.Tooltip-w:after {
+  border-color: transparent transparent transparent #666666;
+  top: 50%;
+  left: -6px;
+  margin-top: -6px;
+  margin-right: 0; }
+
+.Tooltip-s:before {
+  top: 100%;
+  bottom: auto;
+  margin-top: 6px;
+  margin-bottom: 0; }
+.Tooltip-s:after {
+  border-color: transparent transparent #666666;
+  top: auto;
+  bottom: -6px; }
+
+/* =============================================================================
+    Icons
+============================================================================= */
+/*
+ * Usage : add a data-icon attribute to an HTML element.
+ *
+ * <a href="#" data-icon="&#xe600;"> Icon with text</a>
+ *
+ *
+ * <a href="#" data-icon="&#xe600;">
+ *   <span class="visuallyhidden">Icon alone</span>
+ * </a>
+ *
+ *
+ * Accessibility & Screen Readers :
+ *
+ * It seems we can get rid of the aria-hidden="true" attribute since we use
+ * PUA for the encoding of glyphs.
+ * Resource : http://nimbupani.com/markup-free-icon-fonts-with-unicode-range.html
+ *
+ * However, it's not what it's said here :
+ * http://css-tricks.com/html-for-icon-font-usage/
+ *
+ * -------------------------------------
+ *
+ * Glyphs :
+ *
+ * - \e600 : link (anchor)
+ * - \e601 : comment
+ * - \e602 : menu
+ * - \e603 : checkmark
+ *
+ */
+@font-face {
+  font-family: 'icons';
+  src: url("../fonts/icons/icomoon.eot?suq2ua");
+  src: url("../fonts/icons/icomoon.eot?#iefixsuq2ua") format("embedded-opentype"), url("../fonts/icons/icomoon.woff?suq2ua") format("woff"), url("../fonts/icons/icomoon.ttf?suq2ua") format("truetype"), url("../fonts/icons/icomoon.svg?suq2ua#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+[data-icon]:before {
+  font-family: 'icons';
+  content: attr(data-icon);
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  padding-right: 0.125em;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+[href^="#"]:before {
+  font-family: 'icons';
+  content: "\e600";
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  padding-right: 0.125em;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 0.8em; }
+
+/* ==========================================================================
+   Listbox component
+   ========================================================================== */
+/*
+   Style
+   -------------------------------------------------------------------------- */
+[role="listbox"]:focus {
+  outline: 0;
+  box-shadow: 0 0 3px #7db6e8; }
+
+[role="listbox"] > span {
+  border: 1px solid #cccccc;
+  padding: 0 0.3em;
+  position: relative; }
+  [role="listbox"] > span:after {
+    font-family: 'icons';
+    content: "\e602";
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    padding-right: 0.125em;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 0.8em;
+    line-height: 1.8em;
+    position: absolute;
+    top: 0;
+    right: 0.1em; }
+
+[role="listbox"] > ul, [role="listbox"] > ol {
+  background-color: white;
+  border: 1px solid #cccccc;
+  border-top: 0; }
+
+[role="listbox"] [role="separator"] {
+  font-style: italic;
+  font-weight: bold;
+  padding: 0 0.3em; }
+
+[role="listbox"] [role="option"] {
+  position: relative;
+  padding: 0 0.3em 0 1.2em;
+  transition: color 0.1s, background-color 0.1s; }
+  [role="listbox"] [role="option"]:focus, [role="listbox"] [role="option"]:hover {
+    background-color: #666666;
+    color: white; }
+  [role="listbox"] [role="option"]:before {
+    font-family: 'icons';
+    content: "\e603";
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    padding-right: 0.125em;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: none;
+    font-size: 0.6em;
+    position: absolute;
+    top: 0.5em;
+    left: 0.4em; }
+  [role="listbox"] [role="option"][aria-selected="true"]:before {
+    display: block; }
+
+/*
+   Behavior
+   -------------------------------------------------------------------------- */
+[role="listbox"] {
+  cursor: default;
+  position: relative; }
+
+[role="listbox"] > span {
+  display: block;
+  z-index: 100; }
+
+[role="listbox"] > ul, [role="listbox"] > ol {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 0.1s, opacity 0.1s linear;
+  z-index: 101; }
+  [role="listbox"] > ul[aria-hidden="false"], [role="listbox"] > ol[aria-hidden="false"] {
+    visibility: visible;
+    opacity: 1;
+    transition-delay: 0s; }
+
+/* ==========================================================================
+   Styles
+   ========================================================================== */
+html, body {
+  height: 100%;
+  overflow-x: hidden; }
+
+.wrapper {
+  background-color: white;
+  margin: 0 auto;
+  padding: 1em 2em;
+  width: 80%;
+  max-width: 1280px;
+  min-height: 100%; }
+
+/*
+   Header
+   -------------------------------------------------------------------------- */
+.Header {
+  font-size: 2em;
+  position: relative; }
+  .Header:before {
+    content: "";
+    background-color: rgba(255, 128, 0, 0.5);
+    display: block;
+    position: absolute;
+    top: 0;
+    right: -9999px;
+    bottom: 0;
+    left: -9999px; }
+  .Header h1 {
+    margin: 0;
+    position: relative; }
+
+/*
+   PlaceholderLabel section
+   -------------------------------------------------------------------------- */
+form fieldset {
+  float: left;
+  width: 45%;
+  margin-left: 10%; }
+  form fieldset:first-child {
+    margin-left: 0; }
+  form fieldset > div {
+    margin: 1.5em 0; }
+form label, form input, form textarea, form select {
+  font-size: 1em; }
+form label {
+  color: grey; }
+form input, form textarea {
+  padding: 0.3em;
+  width: 100%; }
+form input {
+  height: 2em; }
+form select {
+  width: 100%; }
+
+/*
+   Tooltip section
+   -------------------------------------------------------------------------- */
+/*
+   Anchors
+   -------------------------------------------------------------------------- */
+h2 {
+  position: relative; }
+  h2 [href^="#"] {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 100%;
+    padding: 0 0.2em;
+    opacity: 0;
+    text-decoration: none;
+    transition: opacity 0.1s ease; }
+    h2 [href^="#"] [aria-label] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%; }
+      h2 [href^="#"] [aria-label]:before, h2 [href^="#"] [aria-label]:after {
+        visibility: visible; }
+    h2 [href^="#"]:focus, h2 [href^="#"]:hover {
+      opacity: 1; }
+      h2 [href^="#"]:focus [aria-label]:before, h2 [href^="#"]:focus [aria-label]:after, h2 [href^="#"]:hover [aria-label]:before, h2 [href^="#"]:hover [aria-label]:after {
+        display: inline-block; }
+  h2:focus [href^="#"], h2:hover [href^="#"] {
+    opacity: 1; }
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   http://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+@media print {
+  *, *:before, *:after {
+    background: transparent !important;
+    color: #000 !important;
+    /* Black prints faster:
+       http://www.sanbeiji.com/archives/953 */
+    box-shadow: none !important;
+    text-shadow: none !important; }
+
+  a, a:visited {
+    text-decoration: underline; }
+
+  a[href]:after {
+    content: " (" attr(href) ")"; }
+
+  abbr[title]:after {
+    content: " (" attr(title) ")"; }
+
+  /*
+   * Don't show links that are fragment identifiers,
+   * or use the `javascript:` pseudo protocol
+   */
+  a[href^="#"]:after, a[href^="javascript:"]:after {
+    content: ""; }
+
+  pre, blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid; }
+
+  /*
+   * Printing Tables:
+   * http://css-discuss.incutio.com/wiki/Printing_Tables
+   */
+  thead {
+    display: table-header-group; }
+
+  tr, img {
+    page-break-inside: avoid; }
+
+  img {
+    max-width: 100% !important; }
+
+  p, h2, h3 {
+    orphans: 3;
+    widows: 3; }
+
+  h2, h3 {
+    page-break-after: avoid; }
+ }
