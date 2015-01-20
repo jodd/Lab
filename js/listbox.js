@@ -21,7 +21,6 @@ define(['jquery'], function ($) {
       }
       if (this.tagName.toLowerCase() === 'option') {
         node.setAttribute('role', 'option');
-        node.setAttribute('data-icon', '\ue603');
         node.tabIndex = 1;
         text = document.createTextNode(this.textContent);
       }
@@ -65,7 +64,6 @@ define(['jquery'], function ($) {
 
       // create control element
       this.$control = $('<span>', {
-        'data-icon': '\ue602',
         text: this.el.options[this.el.selectedIndex].textContent
       }).appendTo(this.$box);
 
@@ -102,6 +100,7 @@ define(['jquery'], function ($) {
         this.$options.eq(this.el.selectedIndex).focus();
         this.isOpen = true;
       }
+      return this;
     },
     close: function() {
       if (this.isOpen) {
@@ -109,6 +108,7 @@ define(['jquery'], function ($) {
         this.$list.attr('aria-hidden', 'true');
         this.isOpen = false;
       }
+      return this;
     },
     toggle: function() {
       return this.isOpen ? this.close() : this.open();
@@ -119,6 +119,7 @@ define(['jquery'], function ($) {
       this.el.selectedIndex = index;
       this.$options.attr('aria-selected', 'false');
       $element.attr('aria-selected', 'true');
+      return this;
     },
     onKeydown: function(e) {
       var index = this.isOpen ? this.$options.index(e.target) : this.el.selectedIndex;
@@ -128,8 +129,7 @@ define(['jquery'], function ($) {
           break;
         case 32: // SPACE
           if (this.isOpen) {
-            this.update(index);
-            this.$box.focus();
+            this.update(index).$box.focus();
           }
           this.toggle();
           break;
@@ -157,9 +157,10 @@ define(['jquery'], function ($) {
             this.$box.focus();
           }
       }
+      return this;
     },
     onKeypress: function(e) {
-      if (!e.charCode) { return; }
+      if (!e.charCode) { return this; }
 
       // concatenate input if pressed within delay
       this.input = Date.now() - this.timer < this.options.keypressDelay ?
@@ -177,9 +178,10 @@ define(['jquery'], function ($) {
           } else {
             this.update(i);
           }
-          return;
+          return this;
         }
       }
+      return this;
     }
   };
 

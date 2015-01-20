@@ -17,7 +17,8 @@ $bordercolor: hsl(0, 0, 80);
   border: 1px solid $bordercolor;
   padding: 0 .3em;
   position: relative;
-  &:before {
+  &:after {
+    @include icon("\e602");
     font-size: .8em;
     line-height: 1.8em;
     position: absolute;
@@ -51,6 +52,7 @@ $bordercolor: hsl(0, 0, 80);
     color: white;
   }
   &:before {
+    @include icon("\e603");
     display: none;
     font-size: .6em;
     position: absolute;
