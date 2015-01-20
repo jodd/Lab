@@ -102,35 +102,19 @@ form {
 h2 {
   position: relative;
 
-  [href^="#"] {
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 100%;
-    padding: 0 .2em;
-    opacity: 0;
-    text-decoration: none;
-    transition: opacity .1s ease;
-
-    [aria-label] {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      &:before, &:after { visibility: visible; }
-    }
-
-    &:focus, &:hover {
-      opacity: 1;
-      [aria-label]:before, [aria-label]:after { display: inline-block; }
-    }
-  }
-
-  &:focus, &:hover {
-    [href^="#"] { opacity: 1; }
-  }
+[href^="#"] {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 100%;
+  padding: 0 .2em;
+  opacity: 0;
+  text-decoration: none;
+  &:focus, &:hover,
+  h1:focus &, h1:hover &,
+  h2:focus &, h2:hover & { opacity: 1; }
 }
+
 
 
 /* ==========================================================================
