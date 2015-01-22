@@ -87,6 +87,7 @@ $Tooltip-bgcolor: hsl(0, 0, 40%);
     bottom: 50%;
     margin-right: 6px;
     margin-bottom: 0;
+    -webkit-transform: translateY(50%);
     transform: translateY(50%);
   }
   &:after { // arrow

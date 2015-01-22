@@ -542,6 +542,7 @@ textarea {
   bottom: 50%;
   margin-right: 6px;
   margin-bottom: 0;
+  -webkit-transform: translateY(50%);
   transform: translateY(50%); }
 .Tooltip-w:after {
   border-color: transparent transparent transparent #666666;
@@ -785,9 +786,6 @@ form input {
 form select {
   width: 100%; }
 
-/*
-   Tooltip section
-   -------------------------------------------------------------------------- */
 /*
    Anchors
    -------------------------------------------------------------------------- */
