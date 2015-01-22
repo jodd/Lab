@@ -839,6 +839,8 @@ select {
     right: -9999px;
     bottom: 0;
     left: -9999px; }
+  .Header > div {
+    position: relative; }
   .Header h1 {
     font-size: 3em;
     margin: 0;
