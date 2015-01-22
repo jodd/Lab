@@ -1,6 +1,7 @@
 # Lab
 
-My Laboratory. [demo](http://)
+
+My [laboratory](http://jodd.net/lab) where I test some stuff.
 
 ## Icon font
 
@@ -26,9 +27,7 @@ My Laboratory. [demo](http://)
 - [http://mattdsmith.com/float-label-pattern/](http://mattdsmith.com/float-label-pattern/)
 - [http://bradfrostweb.com/blog/post/float-label-pattern/](http://bradfrostweb.com/blog/post/float-label-pattern/)
 - [http://heydonworks.com/practical_aria_examples/](http://heydonworks.com/practical_aria_examples/)
-
-http://clubdesign.github.io/floatlabels.js/
-https://github.com/clubdesign/floatlabels.js/blob/master/floatlabels.js#L21
+- [http://clubdesign.github.io/floatlabels.js/](http://clubdesign.github.io/floatlabels.js/)
 
 ## Listbox
 
