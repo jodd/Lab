@@ -3,20 +3,33 @@
 ------------------------------------- */
 
 .PlaceholderLabel-label {
-  cursor: text;
+  background-color: hsl(0, 0, 92);
+  border-width: 1px 1px 0;
+  border-style: solid;
+  border-color: hsl(0, 0, 80);
+  border-radius: 3px 3px 0 0;
+  box-shadow: inset 1px 1px 2px white;
+  display: block;
+  height: 1.4em;
+  padding: 0 .4em;
+  margin-bottom: -1px;
+  margin-bottom: -10px;
   font-size: .8em;
-  left: 0;
   opacity: 0;
   position: absolute;
-  top: -.8em;
+  left: .8em;
+  bottom: 100%;
   transition:
-    opacity .1s ease,
-    top .1s ease-out;
+    opacity .1s linear,
+    margin .2s ease-out;
 }
 
 .PlaceholderLabel-label.is-displayed {
   opacity: 1;
-  top: -1.2em;
+  margin-bottom: -1px;
+  transition:
+    opacity .2s linear,
+    margin .1s ease-in;
 }
 
 .PlaceholderLabel-wrapper {

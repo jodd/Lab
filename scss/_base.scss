@@ -1,31 +1,37 @@
-/*
- * What follows is the result of much research on cross-browser styling.
- * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
- * Kroc Camen, and the H5BP dev community and team.
- */
-
-
 /* ==========================================================================
    Base styles: opinionated defaults
    ========================================================================== */
 
+@import "normalize",
+        "helpers",
+        "placeholderLabel",
+        "tooltip",
+        "icons",
+        "listbox";
+
 $textcolor: #222;
 $bgcolor: hsl(0, 0, 90%);
+$lightblue: hsla(200, 60, 60, 0.2);
+$darkblue: hsla(200, 60, 60, 0.8);
+$darkgrey: hsl(0, 0, 80);
 
 * {
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
 html {
+  font: 62.5%/1.5 sans-serif;
   color: $textcolor;
   background-color: $bgcolor;
-  // font-size: 100%;
-  font-size: 1em;
-  line-height: 1.4;
 }
 
 body {
-  // font-size: 0.75em;
+  font-size: 1.6em;
 }
 
 /*
@@ -46,10 +52,7 @@ body {
   text-shadow: none;
 }
 
-/*
- * A better looking default horizontal rule
- */
-
+// A better looking default horizontal rule
 hr {
   display: block;
   height: 1px;
@@ -75,22 +78,107 @@ video {
 }
 
 /*
- * Remove default fieldset styles.
- */
+    Form elements
+  --------------------------------------------------------------------------- */
 
+// Remove default fieldset styles.
 fieldset {
   border: 0;
   margin: 0;
   padding: 0;
 }
 
-/*
- * Allow only vertical resizing of textareas.
- */
+label {
+  color: grey;
+}
+
+input[type=text],
+input[type=email],
+input[type=search],
+input[type=password],
+textarea {
+  width: 100%;
+  padding: 0 .6em;
+  resize: vertical; // Allow only vertical resizing of textareas
+  background-color: hsl(0, 0, 98);
+  border: 1px solid $darkgrey;
+  border-radius: 2px;
+  box-shadow: inset 0 0 4px hsla(0, 0, 0, 0.1);
+  outline: 0 solid $lightblue;
+  outline-offset: 1.6em;
+  transition:
+    box-shadow .2s linear,
+    outline-offset .2s ease-out,
+    outline-color .2s linear;
+  &:focus {
+    border-color: $darkblue;
+    box-shadow:
+      inset 0 0 4px hsla(0, 0, 0, 0.2),
+      0 0 6px $darkblue;
+    outline: 4px solid transparent;
+    outline-offset: 0px;
+  }
+}
+
+input[type=text],
+input[type=email],
+input[type=search],
+input[type=password] {
+  width: 100%;
+  height: 2em;
+}
 
 textarea {
-  resize: vertical;
+  padding: .4em .6em;
 }
+
+select {
+  width: 100%;
+  height: 2em;
+  .js & { opacity: 0; }
+}
+
+[role="listbox"] {
+  width: 100%;
+  height: 2em;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    outline: 0 solid $lightblue;
+    outline-offset: 1.6em;
+    transition:
+      box-shadow .2s linear .1s,
+      outline-offset .3s ease-out,
+      outline-color .3s linear;
+  }
+  &:focus {
+    &:before {
+      box-shadow: 0 0 6px $darkblue;
+      outline: 4px solid transparent;
+      outline-offset: -1px;
+    }
+    > span { border-color: $darkblue; }
+  }
+  > span {
+    height: 2em;
+    padding: .2em 2em 0 .6em;
+    border: 1px solid $darkgrey;
+    border-radius: 2px;
+    &:after {
+      @include icon("\e602");
+      font-size: 1.2em;
+      right: 0;
+    }
+  }
+  [role="option"]:before {
+    @include icon("\e603");
+    font-size: .7em;
+    left: .4em;
+    top: .6em;
+  }
+}
+
 
 /* ==========================================================================
    Browser Upgrade Prompt

@@ -23,7 +23,6 @@ $Tooltip-bgcolor: hsl(0, 0, 40%);
   &:before { // tooltip box
     background-color: $Tooltip-bgcolor;
     border-radius: 3px;
-    bottom: 100%;
     color: $Tooltip-textcolor;
     content: attr(aria-label);
     display: none;
@@ -31,8 +30,10 @@ $Tooltip-bgcolor: hsl(0, 0, 40%);
     // opacity: 0;
     // visibility: hidden;
     // transition: opacity .2s ease, visibility 0s linear .2s;
-    font: .8rem/1 Helvetica, sans-serif;
+    font: 1.4rem/1 Helvetica, sans-serif;
+    cursor: text;
     right: 50%;
+    bottom: 100%;
     margin-bottom: 6px;
     padding: .4em .6em;
     position: absolute;
@@ -56,7 +57,14 @@ $Tooltip-bgcolor: hsl(0, 0, 40%);
   }
   &:focus, &:hover, &:active {
     &:before, &:after { display: inline-block; }
-    // &:before, &:after { opacity: 1; visibility: visible; transition: opacity .2s ease, visibility 0s linear 0s; }
+    // &:before, &:after {
+    //   opacity: 1;
+    //   visibility: visible;
+    //   transition:
+    //     opacity .2s ease,
+    //     visibility 0s linear 0s;
+    //   }
+    // }
   }
 }
 

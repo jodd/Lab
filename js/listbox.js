@@ -76,6 +76,7 @@ define(['jquery'], function ($) {
         .on('mouseover', function() { this.focus(); })
         .on('click', function() {
           self.update(self.$options.index(this));
+          self.$box.focus();
         });
 
       // set the default selected option

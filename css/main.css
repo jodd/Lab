@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Imports
+   Base styles: opinionated defaults
    ========================================================================== */
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 /**
@@ -387,95 +387,32 @@ td, th {
 .clearfix:after, form:after {
   clear: both; }
 
-/*
- * What follows is the result of much research on cross-browser styling.
- * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
- * Kroc Camen, and the H5BP dev community and team.
- */
-/* ==========================================================================
-   Base styles: opinionated defaults
-   ========================================================================== */
-* {
-  box-sizing: border-box; }
-
-html {
-  color: #222;
-  background-color: #e6e6e6;
-  font-size: 1em;
-  line-height: 1.4; }
-
-/*
- * Remove text-shadow in selection highlight:
- * https://twitter.com/miketaylr/status/12228805301
- *
- * These selection rule sets have to be separate.
- * Customize the background color to match your design.
- */
-::-moz-selection {
-  background: #b3d4fc;
-  text-shadow: none; }
-
-::selection {
-  background: #b3d4fc;
-  text-shadow: none; }
-
-/*
- * A better looking default horizontal rule
- */
-hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: 1em 0;
-  padding: 0; }
-
-/*
- * Remove the gap between audio, canvas, iframes,
- * images, videos and the bottom of their containers:
- * https://github.com/h5bp/html5-boilerplate/issues/440
- */
-audio, canvas, iframe, img, svg, video {
-  vertical-align: middle; }
-
-/*
- * Remove default fieldset styles.
- */
-fieldset {
-  border: 0;
-  margin: 0;
-  padding: 0; }
-
-/*
- * Allow only vertical resizing of textareas.
- */
-textarea {
-  resize: vertical; }
-
-/* ==========================================================================
-   Browser Upgrade Prompt
-   ========================================================================== */
-.browserupgrade {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0; }
-
 /* -------------------------------------
     PlaceholderLabel component
 ------------------------------------- */
 .PlaceholderLabel-label {
-  cursor: text;
+  background-color: #ebebeb;
+  border-width: 1px 1px 0;
+  border-style: solid;
+  border-color: #cccccc;
+  border-radius: 3px 3px 0 0;
+  box-shadow: inset 1px 1px 2px white;
+  display: block;
+  height: 1.4em;
+  padding: 0 0.4em;
+  margin-bottom: -1px;
+  margin-bottom: -10px;
   font-size: 0.8em;
-  left: 0;
   opacity: 0;
   position: absolute;
-  top: -0.8em;
-  transition: opacity 0.1s ease, top 0.1s ease-out; }
+  left: 0.8em;
+  bottom: 100%;
+  transition: opacity 0.1s linear, margin 0.2s ease-out; }
 
 .PlaceholderLabel-label.is-displayed {
   opacity: 1;
-  top: -1.2em; }
+  margin-bottom: -1px;
+  transition: opacity 0.2s linear, margin 0.1s ease-in; }
 
 .PlaceholderLabel-wrapper {
   position: relative; }
@@ -494,12 +431,13 @@ textarea {
   [aria-label]:before, .Tooltip:before, .Tooltip-e:before, .Tooltip-w:before, .Tooltip-s:before {
     background-color: #666666;
     border-radius: 3px;
-    bottom: 100%;
     color: white;
     content: attr(aria-label);
     display: none;
-    font: .8rem/1 Helvetica, sans-serif;
+    font: 1.4rem/1 Helvetica, sans-serif;
+    cursor: text;
     right: 50%;
+    bottom: 100%;
     margin-bottom: 6px;
     padding: 0.4em 0.6em;
     position: absolute;
@@ -602,7 +540,7 @@ textarea {
   font-style: normal; }
 
 [data-icon]:before {
-  font-family: 'icons';
+  font-family: 'icons', sans-serif;
   content: attr(data-icon);
   speak: none;
   font-style: normal;
@@ -616,8 +554,8 @@ textarea {
   -moz-osx-font-smoothing: grayscale; }
 
 [href^="#"]:before {
-  font-family: 'icons';
-  content: "\e600";
+  font-family: 'icons', sans-serif;
+  content: "#";
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -627,61 +565,227 @@ textarea {
   padding-right: 0.125em;
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: 0.8em; }
+  -moz-osx-font-smoothing: grayscale; }
 
 /* ==========================================================================
-   Listbox component
+   Listbox default styles
    ========================================================================== */
-/*
-   Style
-   -------------------------------------------------------------------------- */
-[role="listbox"]:focus {
-  outline: 0;
-  box-shadow: 0 0 3px #7db6e8; }
-
-[role="listbox"] > span {
-  border: 1px solid #cccccc;
-  padding: 0 0.3em;
-  position: relative; }
-  [role="listbox"] > span:after {
-    font-family: 'icons';
-    content: "\e602";
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-    padding-right: 0.125em;
-    /* Better Font Rendering =========== */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-size: 0.8em;
-    line-height: 1.8em;
+[role="listbox"] {
+  cursor: default;
+  display: inline-block;
+  position: relative;
+  outline: 0; }
+  [role="listbox"]:focus:before {
+    content: "";
     position: absolute;
     top: 0;
-    right: 0.1em; }
+    right: 0;
+    bottom: 0;
+    left: 0;
+    outline: 1px dotted lightblue; }
+  [role="listbox"] > span {
+    display: block;
+    border: 1px solid grey;
+    position: relative;
+    padding: 0 2em 0 0.6em;
+    z-index: 100; }
+    [role="listbox"] > span:after {
+      font-family: 'icons', sans-serif;
+      content: "▼";
+      speak: none;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+      padding-right: 0.125em;
+      /* Better Font Rendering =========== */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      position: absolute;
+      bottom: 50%;
+      -webkit-transform: translateY(50%);
+      transform: translateY(50%);
+      right: 4px; }
+  [role="listbox"] > ul, [role="listbox"] > ol {
+    background-color: white;
+    border: 1px solid grey;
+    border-top: 0;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s linear 0.2s, opacity 0.2s linear;
+    z-index: 101; }
+    [role="listbox"] > ul[aria-hidden="false"], [role="listbox"] > ol[aria-hidden="false"] {
+      visibility: visible;
+      opacity: 1;
+      transition-delay: 0s; }
+  [role="listbox"] [role="separator"] {
+    font-style: italic;
+    font-weight: bold;
+    padding: 0 0.3em; }
+  [role="listbox"] [role="option"] {
+    position: relative;
+    padding: 0.1em 0.3em 0.1em 1.2em;
+    outline: 0;
+    transition: color 0.1s, background-color 0.1s; }
+    [role="listbox"] [role="option"]:focus, [role="listbox"] [role="option"]:hover {
+      background-color: grey;
+      color: white; }
+    [role="listbox"] [role="option"]:before {
+      font-family: 'icons', sans-serif;
+      content: "✓";
+      speak: none;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+      padding-right: 0.125em;
+      /* Better Font Rendering =========== */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      display: none;
+      position: absolute;
+      left: 0.3em;
+      top: 0.2em; }
+    [role="listbox"] [role="option"][aria-selected="true"]:before {
+      display: block; }
 
-[role="listbox"] > ul, [role="listbox"] > ol {
-  background-color: white;
+* {
+  box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  overflow-x: hidden; }
+
+html {
+  font: 62.5%/1.5 sans-serif;
+  color: #222;
+  background-color: #e6e6e6; }
+
+body {
+  font-size: 1.6em; }
+
+/*
+ * Remove text-shadow in selection highlight:
+ * https://twitter.com/miketaylr/status/12228805301
+ *
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none; }
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none; }
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0; }
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+audio, canvas, iframe, img, svg, video {
+  vertical-align: middle; }
+
+/*
+    Form elements
+  --------------------------------------------------------------------------- */
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0; }
+
+label {
+  color: grey; }
+
+input[type=text], input[type=email], input[type=search], input[type=password], textarea {
+  width: 100%;
+  padding: 0 0.6em;
+  resize: vertical;
+  background-color: #fafafa;
   border: 1px solid #cccccc;
-  border-top: 0; }
+  border-radius: 2px;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.1);
+  outline: 0 solid rgba(92, 173, 214, 0.2);
+  outline-offset: 1.6em;
+  transition: box-shadow 0.2s linear, outline-offset 0.2s ease-out, outline-color 0.2s linear; }
+  input[type=text]:focus, input[type=email]:focus, input[type=search]:focus, input[type=password]:focus, textarea:focus {
+    border-color: rgba(92, 173, 214, 0.8);
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2), 0 0 6px rgba(92, 173, 214, 0.8);
+    outline: 4px solid transparent;
+    outline-offset: 0px; }
 
-[role="listbox"] [role="separator"] {
-  font-style: italic;
-  font-weight: bold;
-  padding: 0 0.3em; }
+input[type=text], input[type=email], input[type=search], input[type=password] {
+  width: 100%;
+  height: 2em; }
 
-[role="listbox"] [role="option"] {
-  position: relative;
-  padding: 0 0.3em 0 1.2em;
-  transition: color 0.1s, background-color 0.1s; }
-  [role="listbox"] [role="option"]:focus, [role="listbox"] [role="option"]:hover {
-    background-color: #666666;
-    color: white; }
+textarea {
+  padding: 0.4em 0.6em; }
+
+select {
+  width: 100%;
+  height: 2em; }
+  .js select {
+    opacity: 0; }
+
+[role="listbox"] {
+  width: 100%;
+  height: 2em; }
+  [role="listbox"]:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    outline: 0 solid rgba(92, 173, 214, 0.2);
+    outline-offset: 1.6em;
+    transition: box-shadow 0.2s linear 0.1s, outline-offset 0.3s ease-out, outline-color 0.3s linear; }
+  [role="listbox"]:focus:before {
+    box-shadow: 0 0 6px rgba(92, 173, 214, 0.8);
+    outline: 4px solid transparent;
+    outline-offset: -1px; }
+  [role="listbox"]:focus > span {
+    border-color: rgba(92, 173, 214, 0.8); }
+  [role="listbox"] > span {
+    height: 2em;
+    padding: 0.2em 2em 0 0.6em;
+    border: 1px solid #cccccc;
+    border-radius: 2px; }
+    [role="listbox"] > span:after {
+      font-family: 'icons', sans-serif;
+      content: "\e602";
+      speak: none;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+      padding-right: 0.125em;
+      /* Better Font Rendering =========== */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-size: 1.2em;
+      right: 0; }
   [role="listbox"] [role="option"]:before {
-    font-family: 'icons';
+    font-family: 'icons', sans-serif;
     content: "\e603";
     speak: none;
     font-style: normal;
@@ -693,62 +797,35 @@ textarea {
     /* Better Font Rendering =========== */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    display: none;
-    font-size: 0.6em;
-    position: absolute;
-    top: 0.5em;
-    left: 0.4em; }
-  [role="listbox"] [role="option"][aria-selected="true"]:before {
-    display: block; }
+    font-size: 0.7em;
+    left: 0.4em;
+    top: 0.6em; }
 
-/*
-   Behavior
-   -------------------------------------------------------------------------- */
-[role="listbox"] {
-  cursor: default;
-  position: relative; }
-
-[role="listbox"] > span {
-  display: block;
-  z-index: 100; }
-
-[role="listbox"] > ul, [role="listbox"] > ol {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  left: 0;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s linear 0.1s, opacity 0.1s linear;
-  z-index: 101; }
-  [role="listbox"] > ul[aria-hidden="false"], [role="listbox"] > ol[aria-hidden="false"] {
-    visibility: visible;
-    opacity: 1;
-    transition-delay: 0s; }
+/* ==========================================================================
+   Browser Upgrade Prompt
+   ========================================================================== */
+.browserupgrade {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0; }
 
 /* ==========================================================================
    Styles
    ========================================================================== */
-html, body {
-  height: 100%;
-  overflow-x: hidden; }
-
 .wrapper {
   background-color: white;
   margin: 0 auto;
   padding: 1em 2em;
   width: 80%;
-  max-width: 1280px;
+  max-width: 1024px;
   min-height: 100%; }
 
 /*
    Header
    -------------------------------------------------------------------------- */
 .Header {
-  font-size: 2em;
+  font-size: 1.4em;
   position: relative; }
   .Header:before {
     content: "";
@@ -760,8 +837,11 @@ html, body {
     bottom: 0;
     left: -9999px; }
   .Header h1 {
+    font-size: 3em;
     margin: 0;
     position: relative; }
+  .Header p {
+    margin: 0; }
 
 /*
    PlaceholderLabel section
@@ -774,17 +854,6 @@ form fieldset {
     margin-left: 0; }
   form fieldset > div {
     margin: 1.5em 0; }
-form label, form input, form textarea, form select {
-  font-size: 1em; }
-form label {
-  color: grey; }
-form input, form textarea {
-  padding: 0.3em;
-  width: 100%; }
-form input {
-  height: 2em; }
-form select {
-  width: 100%; }
 
 /*
    Anchors
@@ -799,7 +868,9 @@ h2 {
     padding: 0 0.2em;
     opacity: 0;
     text-decoration: none;
-    transition: opacity 0.1s ease; }
+    transition: opacity 0.2s ease; }
+    h2 [href^="#"]:before {
+      font: bold 1em/1 sans-serif; }
     h2 [href^="#"] [aria-label] {
       position: absolute;
       top: 0;

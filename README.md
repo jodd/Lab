@@ -1,11 +1,11 @@
 # Lab
 
 
-My [laboratory](http://jodd.net/lab) where I test some stuff.
+The [page](http://jodd.net/lab) I use to test some stuff.
 
-## Icon font
+## Resources
 
-### Resources
+### Icon font
 
 - [http://css-tricks.com/html-for-icon-font-usage/](http://css-tricks.com/html-for-icon-font-usage/)
 - [http://nimbupani.com/markup-free-icon-fonts-with-unicode-range.html](http://nimbupani.com/markup-free-icon-fonts-with-unicode-range.html)
@@ -13,29 +13,24 @@ My [laboratory](http://jodd.net/lab) where I test some stuff.
 - [http://www.nczonline.net/blog/2013/04/01/making-accessible-icon-buttons/](http://www.nczonline.net/blog/2013/04/01/making-accessible-icon-buttons/)
 
 
-## Tooltip
-
-### Resources
+### Tooltip
 
 - [http://css-tricks.com/bubble-point-tooltips-with-css3-jquery/](http://css-tricks.com/bubble-point-tooltips-with-css3-jquery/)
 - [http://codepen.io/HugoGiraudel/pen/vGIHi](http://codepen.io/HugoGiraudel/pen/vGIHi)
 
-## PlaceholderLabel
-
-### Resources
+### PlaceholderLabel
 
 - [http://mattdsmith.com/float-label-pattern/](http://mattdsmith.com/float-label-pattern/)
 - [http://bradfrostweb.com/blog/post/float-label-pattern/](http://bradfrostweb.com/blog/post/float-label-pattern/)
 - [http://heydonworks.com/practical_aria_examples/](http://heydonworks.com/practical_aria_examples/)
 - [http://clubdesign.github.io/floatlabels.js/](http://clubdesign.github.io/floatlabels.js/)
 
-## Listbox
+### Listbox
 
-### Resources
 - [https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms/How_to_build_custom_form_widgets](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms/How_to_build_custom_form_widgets)
 
 
-## Changelog
+<!--## Changelog
 
 - 15/12/2014 : listbox upgrade (formerly selectbox)
 - 27/11/2014 : add custom selectbox
@@ -43,4 +38,4 @@ My [laboratory](http://jodd.net/lab) where I test some stuff.
 - 19/11/2014 : pure CSS tooltips usage
 - 17/11/2014 : manage CSS with SASS + use grunt for SASS compile, jshint and other stuff
 - 14/11/2014 : add requirejs to manage js scripts
-- 30/10/2014 : first commit
+- 30/10/2014 : first commit-->

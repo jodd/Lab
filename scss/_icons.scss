@@ -48,7 +48,7 @@
 }
 
 @mixin icon($glyph) {
-  font-family: 'icons';
+  font-family: 'icons', sans-serif;
   content: $glyph;
   speak: none;
   font-style: normal;
@@ -67,6 +67,5 @@
 }
 
 [href^="#"]:before {
-  @include icon("\e600");
-  font-size: .8em;
+  @include icon("#");
 }

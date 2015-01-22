@@ -1,32 +1,15 @@
-
-/* ==========================================================================
-   Imports
-   ========================================================================== */
-
-@import "normalize",
-        "helpers",
-        "base",
-        "placeholderLabel",
-        "tooltip",
-        "icons",
-        "listbox";
-
+@import "base";
 
 /* ==========================================================================
    Styles
    ========================================================================== */
-
-html, body {
-  height: 100%;
-  overflow-x: hidden;
-}
 
 .wrapper {
   background-color: white;
   margin: 0 auto;
   padding: 1em 2em;
   width: 80%;
-  max-width: 1280px;
+  max-width: 1024px;
   min-height: 100%;
 }
 
@@ -35,7 +18,7 @@ html, body {
    -------------------------------------------------------------------------- */
 
 .Header {
-  font-size: 2em;
+  font-size: 1.4em;
   position: relative;
   &:before {
     content: "";
@@ -48,8 +31,12 @@ html, body {
     left: -9999px;
   }
   h1 {
+    font-size: 3em;
     margin: 0;
     position: relative;
+  }
+  p {
+    margin: 0;
   }
 }
 
@@ -59,8 +46,6 @@ html, body {
 
 form {
   @extend .clearfix;
-  // margin: 2em;
-  // width: 300px;
   fieldset {
     float: left;
     width: 45%;
@@ -70,24 +55,6 @@ form {
       margin: 1.5em 0;
     }
   }
-  label, input, textarea, select {
-    font-size: 1em;
-  }
-  label {
-    color: grey;
-  }
-  input,
-  textarea {
-    padding: .3em;
-    width: 100%;
-    // &:focus {
-    //   box-shadow: 0 0 3px hsla(208, 70, 70, 1);
-    // }
-  }
-  input {
-    height: 2em;
-  }
-  select { width: 100%; }
 }
 
 /*
@@ -105,7 +72,10 @@ h2 {
     padding: 0 .2em;
     opacity: 0;
     text-decoration: none;
-    transition: opacity .1s ease;
+    transition: opacity .2s ease;
+    &:before {
+      font: bold 1em/1 sans-serif;
+    }
 
     [aria-label] {
       position: absolute;
