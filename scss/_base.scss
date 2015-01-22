@@ -99,7 +99,6 @@ input[type=password],
 textarea {
   width: 100%;
   padding: 0 .6em;
-  resize: vertical; // Allow only vertical resizing of textareas
   background-color: hsl(0, 0, 98);
   border: 1px solid $darkgrey;
   border-radius: 2px;
@@ -118,6 +117,9 @@ textarea {
     outline: 4px solid transparent;
     outline-offset: 0px;
   }
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 input[type=text],
@@ -129,6 +131,7 @@ input[type=password] {
 }
 
 textarea {
+  resize: vertical; // Allow only vertical resizing of textareas
   padding: .4em .6em;
 }
 

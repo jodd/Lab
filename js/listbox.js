@@ -6,7 +6,7 @@ define(['jquery'], function ($) {
   "use strict";
 
   var defaults = {
-    keypressDelay: 1200
+    keypressDelay: 1000
   };
 
   // Private
@@ -162,25 +162,34 @@ define(['jquery'], function ($) {
     },
     onKeypress: function(e) {
       if (!e.charCode) { return this; }
+      var key = String.fromCharCode(e.which),
+          i = this.el.selectedIndex,
+          j = 0,
+          $item;
 
       // concatenate input if pressed within delay
       this.input = Date.now() - this.timer < this.options.keypressDelay ?
-        this.input + e.key :
-        e.key;
+        this.input + key :
+        key;
 
       // update timer
       this.timer = Date.now();
 
-      // update listbox (if closed) or focus proper item if the user input matches any option
-      for (var i = 0 ; i < this.$options.length ; i++) {
-        if (this.$options.eq(i).text().substr(0, this.input.length).toLowerCase() === this.input) {
+      // if the user input matches any option
+      // focus proper item if list open
+      // update listbox otherwise
+      while (j < this.$options.length) {
+        i = ++i === this.$options.length ? 0 : i;
+        $item = this.$options.eq(this.isOpen ? j : i);
+        if (this.input === $item.text().substr(0, this.input.length).toLowerCase()) {
           if (this.isOpen) {
-            this.$options[i].focus();
-          } else {
-            this.update(i);
+            $item.focus();
+            return this;
+          } else {
+            return this.update(i);
           }
-          return this;
         }
+        j++;
       }
       return this;
     }
