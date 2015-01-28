@@ -14,13 +14,14 @@ $bgcolor: hsl(0, 0, 90%);
 $lightblue: hsla(200, 60, 60, 0.2);
 $darkblue: hsla(200, 60, 60, 0.8);
 $darkgrey: hsl(0, 0, 80);
+$lightgrey: hsl(0, 0, 60);
 
 * {
   box-sizing: border-box;
 }
 
 html, body {
-  height: 100%;
+  // height: 100%;
   overflow-x: hidden;
 }
 
@@ -101,7 +102,7 @@ textarea {
   padding: 0 .6em;
   background-color: hsl(0, 0, 98);
   border: 1px solid $darkgrey;
-  border-radius: 2px;
+  border-radius: 3px;
   box-shadow: inset 0 0 4px hsla(0, 0, 0, 0.1);
   outline: 0 solid $lightblue;
   outline-offset: 1.6em;
@@ -136,13 +137,11 @@ textarea {
 }
 
 select {
-  width: 100%;
   height: 2em;
   .js & { opacity: 0; }
 }
 
 [role="listbox"] {
-  width: 100%;
   height: 2em;
   &:before {
     content: "";
@@ -164,21 +163,37 @@ select {
     > span { border-color: $darkblue; }
   }
   > span {
-    height: 2em;
-    padding: .2em 2em 0 .6em;
+    line-height: 2em;
+    padding: 0 2em 0 .6em;
     border: 1px solid $darkgrey;
-    border-radius: 2px;
+    border-radius: 3px;
     &:after {
       @include icon("\e602");
       font-size: 1.2em;
       right: 0;
     }
   }
-  [role="option"]:before {
-    @include icon("\e603");
-    font-size: .7em;
-    left: .4em;
-    top: .6em;
+  > ul, > ol {
+    background-color: hsl(0,0,94);
+    border-color: hsl(0,0,60);
+    border-radius: 3px;
+    box-shadow: 0 0 9px hsla(0,0,0,.3);
+  }
+  [role='option'] {
+    &:before { @include icon("\e603"); }
+    &:focus, &:hover {
+      color: black;
+      background-color: hsl(30, 90, 60);
+    }
+  }
+  [aria-selected='true'] {
+    color: hsl(200, 90, 45);
+  }
+  &[aria-disabled='true'] {
+    &:focus {
+      &:before { box-shadow: none; }
+      > span { border-color: $darkgrey; }
+    }
   }
 }
 

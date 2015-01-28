@@ -338,7 +338,7 @@ td, th {
  * Hide only visually, but have it available for screen readers:
  * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
  */
-.visuallyhidden, [role="listbox"] + select {
+.visuallyhidden, [role='listbox'] + select {
   border: 0;
   clip: rect(0 0 0 0);
   height: 1px;
@@ -353,7 +353,7 @@ td, th {
  * to be focusable when navigated to via the keyboard:
  * https://www.drupal.org/node/897638
  */
-.visuallyhidden.focusable:active, [role="listbox"] + select.focusable:active, .visuallyhidden.focusable:focus, [role="listbox"] + select.focusable:focus {
+.visuallyhidden.focusable:active, [role='listbox'] + select.focusable:active, .visuallyhidden.focusable:focus, [role='listbox'] + select.focusable:focus {
   clip: auto;
   height: auto;
   margin: 0;
@@ -570,12 +570,13 @@ td, th {
 /* ==========================================================================
    Listbox default styles
    ========================================================================== */
-[role="listbox"] {
+[role='listbox'] {
   cursor: default;
   display: inline-block;
   position: relative;
-  outline: 0; }
-  [role="listbox"]:focus:before {
+  outline: 0;
+  white-space: nowrap; }
+  [role='listbox']:focus:before {
     content: "";
     position: absolute;
     top: 0;
@@ -583,13 +584,14 @@ td, th {
     bottom: 0;
     left: 0;
     outline: 1px dotted lightblue; }
-  [role="listbox"] > span {
+  [role='listbox'] > span {
+    box-sizing: content-box;
     display: block;
     border: 1px solid grey;
     position: relative;
     padding: 0 2em 0 0.6em;
-    z-index: 100; }
-    [role="listbox"] > span:after {
+    z-index: 101; }
+    [role='listbox'] > span:after {
       font-family: 'icons', sans-serif;
       content: "▼";
       speak: none;
@@ -605,42 +607,45 @@ td, th {
       position: absolute;
       bottom: 50%;
       -webkit-transform: translateY(50%);
+      -o-transform: translateY(50%);
+      -ms-transform: translateY(50%);
       transform: translateY(50%);
       right: 4px; }
-  [role="listbox"] > ul, [role="listbox"] > ol {
+  [role='listbox'] > ul, [role='listbox'] > ol {
     background-color: white;
     border: 1px solid grey;
-    border-top: 0;
     position: absolute;
-    top: 100%;
-    right: 0;
-    left: 0;
+    top: 0;
+    left: -0.4em;
+    overflow-y: auto;
     margin: 0;
     padding: 0;
     list-style: none;
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s linear 0.2s, opacity 0.2s linear;
-    z-index: 101; }
-    [role="listbox"] > ul[aria-hidden="false"], [role="listbox"] > ol[aria-hidden="false"] {
+    z-index: 100; }
+    [role='listbox'] > ul[aria-hidden='false'], [role='listbox'] > ol[aria-hidden='false'] {
       visibility: visible;
       opacity: 1;
-      transition-delay: 0s; }
-  [role="listbox"] [role="separator"] {
+      transition-delay: 0s;
+      z-index: 102; }
+  [role='listbox'] [role='separator'] {
     font-style: italic;
     font-weight: bold;
     padding: 0 0.3em; }
-  [role="listbox"] [role="option"] {
+  [role='listbox'] [role='option'] {
     position: relative;
-    padding: 0.1em 0.3em 0.1em 1.2em;
+    padding: 0 1.2em;
+    line-height: 1.2;
     outline: 0;
     transition: color 0.1s, background-color 0.1s; }
-    [role="listbox"] [role="option"]:focus, [role="listbox"] [role="option"]:hover {
+    [role='listbox'] [role='option']:focus, [role='listbox'] [role='option']:hover {
       background-color: grey;
       color: white; }
-    [role="listbox"] [role="option"]:before {
+    [role='listbox'] [role='option']:before {
       font-family: 'icons', sans-serif;
-      content: "✓";
+      content: "✔️";
       speak: none;
       font-style: normal;
       font-weight: normal;
@@ -651,18 +656,28 @@ td, th {
       /* Better Font Rendering =========== */
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      font-size: 0.8em;
       display: none;
       position: absolute;
       left: 0.3em;
-      top: 0.2em; }
-    [role="listbox"] [role="option"][aria-selected="true"]:before {
+      bottom: 50%;
+      -webkit-transform: translateY(50%);
+      -o-transform: translateY(50%);
+      -ms-transform: translateY(50%);
+      transform: translateY(50%);
+      padding-bottom: 0.2em; }
+    [role='listbox'] [role='option'][aria-selected='true']:before {
       display: block; }
+  [role='listbox'][aria-disabled='true']:focus:before {
+    outline: 0; }
+  [role='listbox'][aria-disabled='true'] > span {
+    color: #999999;
+    border-color: #bfbfbf; }
 
 * {
   box-sizing: border-box; }
 
 html, body {
-  height: 100%;
   overflow-x: hidden; }
 
 html {
@@ -720,7 +735,7 @@ input[type=text], input[type=email], input[type=search], input[type=password], t
   padding: 0 0.6em;
   background-color: #fafafa;
   border: 1px solid #cccccc;
-  border-radius: 2px;
+  border-radius: 3px;
   box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.1);
   outline: 0 solid rgba(92, 173, 214, 0.2);
   outline-offset: 1.6em;
@@ -743,13 +758,11 @@ textarea {
   padding: 0.4em 0.6em; }
 
 select {
-  width: 100%;
   height: 2em; }
   .js select {
     opacity: 0; }
 
 [role="listbox"] {
-  width: 100%;
   height: 2em; }
   [role="listbox"]:before {
     content: "";
@@ -768,10 +781,10 @@ select {
   [role="listbox"]:focus > span {
     border-color: rgba(92, 173, 214, 0.8); }
   [role="listbox"] > span {
-    height: 2em;
-    padding: 0.2em 2em 0 0.6em;
+    line-height: 2em;
+    padding: 0 2em 0 0.6em;
     border: 1px solid #cccccc;
-    border-radius: 2px; }
+    border-radius: 3px; }
     [role="listbox"] > span:after {
       font-family: 'icons', sans-serif;
       content: "\e602";
@@ -787,7 +800,12 @@ select {
       -moz-osx-font-smoothing: grayscale;
       font-size: 1.2em;
       right: 0; }
-  [role="listbox"] [role="option"]:before {
+  [role="listbox"] > ul, [role="listbox"] > ol {
+    background-color: #f0f0f0;
+    border-color: #999999;
+    border-radius: 3px;
+    box-shadow: 0 0 9px rgba(0, 0, 0, 0.3); }
+  [role="listbox"] [role='option']:before {
     font-family: 'icons', sans-serif;
     content: "\e603";
     speak: none;
@@ -799,10 +817,16 @@ select {
     padding-right: 0.125em;
     /* Better Font Rendering =========== */
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-size: 0.7em;
-    left: 0.4em;
-    top: 0.6em; }
+    -moz-osx-font-smoothing: grayscale; }
+  [role="listbox"] [role='option']:focus, [role="listbox"] [role='option']:hover {
+    color: black;
+    background-color: #f5993d; }
+  [role="listbox"] [aria-selected='true'] {
+    color: #0b95da; }
+  [role="listbox"][aria-disabled='true']:focus:before {
+    box-shadow: none; }
+  [role="listbox"][aria-disabled='true']:focus > span {
+    border-color: #cccccc; }
 
 /* ==========================================================================
    Browser Upgrade Prompt

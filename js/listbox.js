@@ -6,7 +6,8 @@ define(['jquery'], function ($) {
   "use strict";
 
   var defaults = {
-    keypressDelay: 1000
+    keypressDelay: 1000,
+    offset: -0.3
   };
 
   // Private
@@ -41,6 +42,8 @@ define(['jquery'], function ($) {
     // default state is closed
     this.isOpen = false;
 
+    this.disabled = this.el.disabled;
+
     this.timer = 0;
     this.input = '';
 
@@ -56,7 +59,8 @@ define(['jquery'], function ($) {
       this.$box = $('<div>', {
           'role': 'listbox',
           'aria-expanded': 'false',
-          'tabindex': 0
+          'aria-disabled': this.el.disabled,
+          'tabindex': this.el.disabled ? -1 : 0
         }).insertBefore(this.el)
         // provide some keyboard control
         .on('keydown.listbox', this.onKeydown.bind(this))
@@ -68,7 +72,9 @@ define(['jquery'], function ($) {
       }).appendTo(this.$box);
 
       // create & insert the list of options
-      this.$list = $(_makeList('ul', this.el)).appendTo(this.$box);
+      this.$list = $(_makeList('ul', this.el))
+        .css('max-height', $(window).height() / 2)
+        .appendTo(this.$box);
 
       // cache links that stand for options
       this.$options = this.$list.children('[role="option"]')
@@ -79,23 +85,54 @@ define(['jquery'], function ($) {
           self.$box.focus();
         });
 
+      // make sure control width is wide enough to display any option
+      this.$control.css('min-width', this.$options.first().width());
+
       // set the default selected option
       this.$options.eq(this.el.selectedIndex).attr('aria-selected', 'true');
 
       // cache items that stand for optgroups
       this.$optgroups = this.$list.children('[role="separator"]');
 
+      // click on label makes focus on listbox
+      $('label[for="' + this.el.id + '"]').click(function() {
+        if (!self.el.disabled) {
+          self.$box.focus();
+        }
+      });
+
+      // manage user click inside and outside the listbox
       $(document.documentElement).on('click.listbox', function(e) {
-        if(e.target === self.$control[0]) {
+        if(e.target === self.$control[0] && !self.el.disabled) {
           self.toggle();
-        } else if (self.$optgroups.index(e.target) === -1) {
+        }
+        // close unless user clicked on group separator
+        else if (self.$optgroups.index(e.target) === -1) {
           self.close();
         }
       });
 
+      // alt + tab closes the box and move focus on itself
+      // (rather than on the last focused option)
+      $(window).on('blur', function() {
+        if (self.isOpen) {
+          self.close().$box.focus();
+        }
+      });
+
+      return this.position();
+
+    },
+    position: function() {
+      var defaultTop = this.options.offset * this.$list.height();
+      var defaultOffset = this.$box.offset().top - $(window).scrollTop() + defaultTop;
+      var gap = Math.max(0, defaultOffset + this.$list.height() - $(window).height() + 30);
+      this.$list.css('top', defaultTop - gap);
+      return this;
     },
     open: function() {
       if (!this.isOpen) {
+        this.position();
         this.$box.attr('aria-expanded', 'true');
         this.$list.attr('aria-hidden', 'false');
         this.$options.eq(this.el.selectedIndex).focus();
@@ -123,18 +160,21 @@ define(['jquery'], function ($) {
       return this;
     },
     onKeydown: function(e) {
+      if (this.disabled) { return this; }
       var index = this.isOpen ? this.$options.index(e.target) : this.el.selectedIndex;
       switch (e.keyCode) {
         case 9: // TAB
           if (this.isOpen) { return false; }
           break;
         case 32: // SPACE
+          e.preventDefault();
           if (this.isOpen) {
             this.update(index).$box.focus();
           }
           this.toggle();
           break;
         case 38: // UP ARROW
+          e.preventDefault();
           if (index--) {
             if (this.isOpen) {
               this.$options[index].focus();
@@ -144,6 +184,7 @@ define(['jquery'], function ($) {
           }
           break;
         case 40: // DOWN ARROW
+          e.preventDefault();
           if (++index !== this.$options.length) {
             if (this.isOpen) {
               this.$options[index].focus();
@@ -161,16 +202,15 @@ define(['jquery'], function ($) {
       return this;
     },
     onKeypress: function(e) {
-      if (!e.charCode) { return this; }
+      if (!e.charCode || this.disabled) { return this; }
       var key = String.fromCharCode(e.which),
-          i = this.el.selectedIndex,
-          j = 0,
+          elapsed = Date.now() - this.timer > this.options.keypressDelay,
+          i = elapsed ? this.el.selectedIndex : this.el.selectedIndex - 1,
+          j = -1,
           $item;
 
       // concatenate input if pressed within delay
-      this.input = Date.now() - this.timer < this.options.keypressDelay ?
-        this.input + key :
-        key;
+      this.input = elapsed ? key : this.input + key;
 
       // update timer
       this.timer = Date.now();
@@ -178,7 +218,7 @@ define(['jquery'], function ($) {
       // if the user input matches any option
       // focus proper item if list open
       // update listbox otherwise
-      while (j < this.$options.length) {
+      while (++j < this.$options.length) {
         i = ++i === this.$options.length ? 0 : i;
         $item = this.$options.eq(this.isOpen ? j : i);
         if (this.input === $item.text().substr(0, this.input.length).toLowerCase()) {
@@ -189,17 +229,24 @@ define(['jquery'], function ($) {
             return this.update(i);
           }
         }
-        j++;
       }
       return this;
+    },
+    enable: function() {
+      this.disabled = this.el.disabled = false;
+      this.$box.attr({
+        'tabindex': 0,
+        'aria-disabled': false
+      });
+    },
+    disable: function() {
+      this.disabled = this.el.disabled = true;
+      this.$box.attr({
+        'tabindex': -1,
+        'aria-disabled': true
+      });
     }
   };
 
-  // jQuery plugin definition
-  $.fn.listbox = function (options) {
-    return this.each(function () {
-      new Listbox(this, options);
-    });
-  };
-
+  return Listbox;
 });

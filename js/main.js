@@ -14,15 +14,33 @@ require.config({
 
 require([
   'jquery',
-  'placeholderLabel',
-  'listbox'
-], function ($) {
-
+  'listbox',
+  'placeholderLabel'
+], function ($, Listbox) {
   "use strict";
 
   $(document).ready(function () {
     $('.PlaceholderLabel').placeholderLabel();
-    $('select').listbox();
+
+    $('select').each(function() {
+      var listbox = new Listbox(this);
+
+      $(this).siblings('button').click(function(e) {
+        e.preventDefault();
+        if (listbox.disabled) {
+          listbox.enable();
+          this.textContent = 'Disable';
+        } else {
+          listbox.disable();
+          this.textContent = 'Enable';
+        }
+      });
+    });
+
+    $('form').on('submit', function(e) {
+      e.preventDefault();
+      window.alert($(this).serialize());
+    });
   });
 
 });
