@@ -41,6 +41,7 @@ require([
       e.preventDefault();
       window.alert($(this).serialize());
     });
+
   });
 
 });

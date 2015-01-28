@@ -64,7 +64,14 @@ define(['jquery'], function ($) {
         }).insertBefore(this.el)
         // provide some keyboard control
         .on('keydown.listbox', this.onKeydown.bind(this))
-        .on('keypress.listbox', this.onKeypress.bind(this));
+        .on('keypress.listbox', this.onKeypress.bind(this))
+        // default behavior support on touch devices
+        .on('click', function(e) {
+          if (Modernizr.touch && !self.disabled) {
+            e.stopPropagation();
+            self.el.focus();
+          }
+        });
 
       // create control element
       this.$control = $('<span>', {
@@ -95,14 +102,16 @@ define(['jquery'], function ($) {
       this.$optgroups = this.$list.children('[role="separator"]');
 
       // click on label makes focus on listbox
-      $('label[for="' + this.el.id + '"]').click(function() {
+      $('label[for="' + this.el.id + '"]').click(function(e) {
+        if (Modernizr.touch) { return; }
+        e.preventDefault();
         if (!self.el.disabled) {
           self.$box.focus();
         }
       });
 
       // manage user click inside and outside the listbox
-      $(document.documentElement).on('click.listbox', function(e) {
+      $(document).on('click.listbox', function(e) {
         if(e.target === self.$control[0] && !self.el.disabled) {
           self.toggle();
         }
@@ -119,6 +128,14 @@ define(['jquery'], function ($) {
           self.close().$box.focus();
         }
       });
+
+      // Touch devices use the original select element
+      // provide back up changes on listbox
+      if (Modernizr.touch) {
+        $(this.el).on('change', function() {
+          self.update(this.selectedIndex);
+        });
+      }
 
       return this.position();
 
