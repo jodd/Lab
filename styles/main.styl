@@ -1,0 +1,115 @@
+/* ==========================================================================
+   Styles
+   ========================================================================== */
+
+// Colors
+textcolor = #222
+bgcolor = hsl(0, 0, 90)
+lightblue = hsla(200, 60, 60, 0.2)
+darkblue = hsla(200, 60, 60, 0.8)
+darkgrey = hsl(0, 0, 80)
+lightgrey = hsl(0, 0, 60)
+
+@import 'helpers'
+@import 'icons'
+@import 'base'
+@import 'placeholderLabel'
+@import 'tooltip'
+@import 'listbox'
+
+.wrapper
+    background-color white
+    margin 0 auto
+    padding 1em 2em
+    width 80%
+    max-width 1024px
+    min-height 100%
+
+/* Header
+   -------------------------------------------------------------------------- */
+.Header
+    font-size 1.4em
+    position relative
+    &:before
+        content ""
+        background-color hsla(30, 100, 50, .5)
+        display block
+        position absolute
+        top 0
+        right -9999px
+        bottom 0
+        left -9999px
+
+    > div
+        position relative
+
+    h1
+        font-size 3em
+        margin 0
+        position relative
+
+    p
+        margin 0
+
+/* PlaceholderLabel section
+   -------------------------------------------------------------------------- */
+form
+    @extend .clearfix
+
+    > div + div
+        margin 1em 0
+
+    fieldset
+        float left
+        width 45%
+        margin-left 10%
+
+        &:first-child
+            margin-left 0
+
+        > div + div
+            margin 1em 0
+
+/* Anchors
+   -------------------------------------------------------------------------- */
+h2
+    position relative
+
+    [href^="#"]
+        display block
+        position absolute
+        top 0
+        right 100%
+        padding 0 .2em
+        opacity 0
+        text-decoration none
+        transition opacity .2s ease
+
+        &:before
+            font bold 1em/1 sans-serif
+
+        [aria-label]
+            position absolute
+            top 0
+            left 0
+            width 100%
+            height 100%
+            &:before, &:after
+                visibility visible
+
+        &:focus, &:hover
+            opacity 1
+
+            [aria-label]:before,
+            [aria-label]:after
+                display inline-block
+
+    &:focus, &:hover
+        [href^="#"]
+            opacity 1
+
+/* ==========================================================================
+   Print styles
+   ========================================================================== */
+
+@import "print"

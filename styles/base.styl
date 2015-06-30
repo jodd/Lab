@@ -1,0 +1,229 @@
+/*! HTML5 Boilerplate v5.2.0 | MIT License | https://html5boilerplate.com/ */
+
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+/*
+ * Remove text-shadow in selection highlight:
+ * https://twitter.com/miketaylr/status/12228805301
+ *
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection
+    background: #b3d4fc
+    text-shadow: none
+
+
+::selection
+    background: #b3d4fc
+    text-shadow: none
+
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr
+    display: block
+    height: 1px
+    border: 0
+    border-top: 1px solid #ccc
+    margin: 1em 0
+    padding: 0
+
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video
+    vertical-align: middle
+
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset
+    border: 0
+    margin: 0
+    padding: 0
+
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea
+    resize: vertical
+
+
+/* ==========================================================================
+   Browser Upgrade Prompt
+   ========================================================================== */
+
+.browserupgrade
+    margin: 0.2em 0
+    background: #ccc
+    color: #000
+    padding: 0.2em 0
+
+
+/* ==========================================================================
+   Base styles: custom defaults
+   ========================================================================== */
+
+*
+    box-sizing border-box
+
+
+html, body
+    // height 100%
+    overflow-x hidden
+
+
+html
+    font 62.5%/1.5 sans-serif
+    color textcolor
+    background-color bgcolor
+
+
+body
+    font-size 1.6em
+
+p
+    margin-top 0
+
+p + p
+    margin 1em 0
+
+/* Form elements
+   -------------------------------------------------------------------------- */
+
+// Remove default fieldset styles.
+fieldset
+    border 0
+    margin 0
+    padding 0
+
+label
+    color grey
+
+input[type=text],
+input[type=email],
+input[type=search],
+input[type=password],
+textarea
+    width 100%
+    padding 0 .6em
+    background-color hsl(0, 0, 98)
+    border 1px solid darkgrey
+    border-radius 3px
+    box-shadow inset 0 0 4px hsla(0, 0, 0, 0.1)
+    outline 0 solid lightblue
+    outline-offset 1.6em
+    transition box-shadow .2s linear,
+        outline-offset .2s ease-out,
+        outline-color .2s linear
+    &:focus
+        border-color darkblue
+        box-shadow inset 0 0 4px hsla(0, 0, 0, 0.2),
+            0 0 6px darkblue
+        outline 4px solid transparent
+        outline-offset 0px
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing antialiased
+    -moz-osx-font-smoothing grayscale
+
+input[type=text],
+input[type=email],
+input[type=search],
+input[type=password]
+    width 100%
+    height 2em
+
+textarea
+    resize vertical // Allow only vertical resizing of textareas
+    padding .4em .6em
+
+select
+    height 2em
+    .js &
+        opacity 0
+
+[role='listbox']
+    height 2em
+    &:before
+        content ""
+        position absolute
+        top 0
+        right 0
+        bottom 0
+        left 0
+        outline 0 solid lightblue
+        outline-offset 1.6em
+        transition box-shadow .2s linear .1s,
+            outline-offset .3s ease-out,
+            outline-color .3s linear
+
+    &:focus
+        &:before
+            box-shadow 0 0 6px darkblue
+            outline 4px solid transparent
+            outline-offset -1px
+
+        > span
+            border-color darkblue
+
+    > span
+        line-height 2em
+        padding 0 2em 0 .6em
+        border 1px solid darkgrey
+        border-radius 3px
+        &:after
+            icon "menu"
+            font-size 1.2em
+            right 0
+
+
+    > ul, > ol
+        background-color hsl(0,0,94)
+        border-color hsl(0,0,60)
+        border-radius 3px
+        box-shadow 0 0 9px hsla(0,0,0,.3)
+
+    [role='option']
+        &:before
+            icon "checkmark"
+        &:focus,
+        &:hover
+            color black
+            background-color hsl(30, 90, 60)
+
+
+    [aria-selected='true']
+        color hsl(200, 90, 45)
+
+    &[aria-disabled='true']
+        &:focus
+            &:before
+                box-shadow none
+            > span
+                border-color darkgrey

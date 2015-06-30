@@ -12,5 +12,7 @@
     "jquery": "1.x",
     "normalize.css": "~3.0.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "html5-boilerplate": "~5.2.0"
+  }
 }

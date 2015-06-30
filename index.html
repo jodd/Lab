@@ -1,127 +1,135 @@
-<!DOCTYPE html>
-<html class="no-js">
-  <head>
+<!doctype html>
+<html class="no-js" lang="">
+<head>
     <meta charset="utf-8">
-    <title>Input text snippet</title>
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <script src="bower_components/modernizr/modernizr.js"></script>
-  </head>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Lab</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <body>
+    <!-- <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/modernizr.js"></script>
+</head>
+
+<body>
     <div class="wrapper">
 
-      <header class="Header">
-        <div>
-          <h1>Lab</h1>
-          <p>This page is used to test things. The code is <a href="https://github.com/jodd/Lab">here</a>.</p>
-        </div>
-      </header>
-
-      <section id="placeholder-label">
-        <h2>
-          <a href="#placeholder-label">
-            <span class="visuallyhidden">Anchor to Placeholder Label section</span>
-          </a>
-          Placeholder Label
-        </h2>
-        <form action="">
-          <fieldset>
+        <header class="Header">
             <div>
-              <input type="text" id="input-1" placeholder="Without label" class="PlaceholderLabel">
+                <h1>Lab</h1>
+                <p>This page is used to test things (<a href="https://github.com/jodd/Lab">source</a>).</p>
             </div>
-            <div>
-              <label for="input-2" class="PlaceholderLabel-label">Without placeholder</label>
-              <input type="text" id="input-2" class="PlaceholderLabel">
-            </div>
-            <div>
-              <label for="input-3" class="PlaceholderLabel-label">With label...</label>
-              <input type="text" id="input-3" placeholder="...and placeholder" class="PlaceholderLabel">
-            </div>
-            <!-- <div>
-              <input type="password" id="input-4" placeholder="Password" class="PlaceholderLabel">
-            </div> -->
-          </fieldset>
-          <fieldset>
-            <!-- <div>
-              <input type="email" id="input-5" placeholder="Email" class="PlaceholderLabel">
-            </div> -->
-            <div>
-              <textarea id="message" placeholder="Message" class="PlaceholderLabel"></textarea>
-            </div>
-          </fieldset>
-        </form>
-      </section>
+        </header>
 
-      <section id="custom-selectbox">
-        <h2>Custom selectbox</h2>
-        <form>
-          <div>
-            <p><label for="select-1">Select box</label></p>
-            <select id="select-1" name="select-1">
-              <option value="option-1">Option 1</option>
-              <option value="option-2">Option 2</option>
-              <option value="option-3">Option 3</option>
-              <option value="foo">Foo</option>
-              <option value="bar">Bar</option>
-              <option value="baz">Baz</option>
-            </select>
-            <button>Disable</button>
-          </div>
-          <div>
-            <p><label for="select-2">Select box with groups</label></p>
-            <select id="select-2" name="select-2">
-              <optgroup label="Group 1">
-                <option value="option-1-1">Option 1.1</option>
-                <option value="option-1-2">Option 1.2</option>
-              </optgroup>
-              <optgroup label="Group 2">
-                <option value="option-2-1">Option 2.1</option>
-                <option value="option-2-2">Option 2.2</option>
-                <option value="option-2-3">Option 2.3</option>
-              </optgroup>
-            </select>
-          </div>
-          <p><input type="submit" value="test"></p>
-        </form>
-      </section>
+        <section id="placeholder-label">
+            <h2>
+                <a href="#placeholder-label">
+                    <span class="visuallyhidden">Anchor to Placeholder Label section</span>
+                </a>
+                Placeholder Label &amp; animated focus
+            </h2>
+            <form action="">
+                <fieldset>
+                    <div>
+                        <input type="text" id="input-1" placeholder="Without label" class="PlaceholderLabel">
+                    </div>
+                    <div>
+                        <label for="input-2" class="PlaceholderLabel-label">Without placeholder</label>
+                        <input type="text" id="input-2" class="PlaceholderLabel">
+                    </div>
+                    <div>
+                        <label for="input-3" class="PlaceholderLabel-label">With label...</label>
+                        <input type="text" id="input-3" placeholder="...and placeholder" class="PlaceholderLabel">
+                    </div>
+                    <!-- <div>
+                    <input type="password" id="input-4" placeholder="Password" class="PlaceholderLabel">
+                    </div> -->
+                </fieldset>
+                <fieldset>
+                    <!-- <div>
+                    <input type="email" id="input-5" placeholder="Email" class="PlaceholderLabel">
+                    </div> -->
+                    <div>
+                        <textarea id="message" placeholder="Message" class="PlaceholderLabel"></textarea>
+                    </div>
+                </fieldset>
+            </form>
+        </section>
 
-      <section id="css-tooltip">
-        <h2>
-          <a href="#css-tooltip">
-            <span aria-label="Anchor to CSS Tooltip section" class="invisible">Anchor to CSS Tooltip section</span>
-          </a>
-          <span data-icon="&#xe601;">CSS Tooltip</span>
-        </h2>
-        <ul>
-          <li><a href="/lab" aria-label="Tooltip (north) !">Hover me</a></li>
-          <li><a href="/lab" class="Tooltip-e" aria-label="Tooltip east !">Hover me (tooltip east)</a></li>
-          <li><a href="/lab" class="Tooltip-w" aria-label="Tooltip west !">Hover me (tooltip west)</a></li>
-          <li><a href="/lab" class="Tooltip-s" aria-label="Tooltip south !">Hover me (tooltip south)</a></li>
-        </ul>
-      </section>
+        <section id="custom-selectbox">
+            <h2>Custom selectbox</h2>
+            <form>
+                <div>
+                    <p><label for="select-1">Select box</label></p>
+                    <select id="select-1" name="select-1">
+                        <option value="option-1">Option 1</option>
+                        <option value="option-2">Option 2</option>
+                        <option value="option-3">Option 3</option>
+                        <option value="foo">Foo</option>
+                        <option value="bar">Bar</option>
+                        <option value="baz">Baz</option>
+                    </select>
+                    <button>Disable</button>
+                </div>
+                <div>
+                    <p><label for="select-2">Select box with groups</label></p>
+                    <select id="select-2" name="select-2">
+                        <optgroup label="Group 1">
+                            <option value="option-1-1">Option 1.1</option>
+                            <option value="option-1-2">Option 1.2</option>
+                        </optgroup>
+                        <optgroup label="Group 2">
+                            <option value="option-2-1">Option 2.1</option>
+                            <option value="option-2-2">Option 2.2</option>
+                            <option value="option-2-3">Option 2.3</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <p><input type="submit" value="test"></p>
+            </form>
+        </section>
 
-      <section id="font-icons">
-        <h2>
-          <a href="#font-icons">
-            <span class="visuallyhidden">Anchor to Font Icons section</span>
-          </a>
-          Font Icons
-        </h2>
-        <!-- <ul>
-          <li>
-            <a href="/">Icon with text</a>
-          </li>
-          <li>
-            <a href="#" class="Tooltip" aria-label="Icon alone">
-              <span data-icon="&#xe601;"></span>
-              <span class="visuallyhidden">Icon alone</span>
-            </a>
-          </li>
-        </ul> -->
-      </section>
+        <section id="css-tooltip">
+            <h2>
+                <a href="#css-tooltip">
+                    <span aria-label="Anchor to CSS Tooltip section" class="invisible">Anchor to CSS Tooltip section</span>
+                </a>
+                <span data-icon="&#xe601;">CSS Tooltip</span>
+            </h2>
+            <ul>
+                <li><a href="/lab" aria-label="Tooltip (north) !">Hover me</a></li>
+                <li><a href="/lab" class="Tooltip-e" aria-label="Tooltip east !">Hover me (tooltip east)</a></li>
+                <li><a href="/lab" class="Tooltip-w" aria-label="Tooltip west !">Hover me (tooltip west)</a></li>
+                <li><a href="/lab" class="Tooltip-s" aria-label="Tooltip south !">Hover me (tooltip south)</a></li>
+            </ul>
+        </section>
+
+        <section id="font-icons">
+            <h2>
+                <a href="#font-icons">
+                    <span class="visuallyhidden">Anchor to Font Icons section</span>
+                </a>
+                Font Icons
+            </h2>
+            <!-- <ul>
+                <li>
+                    <a href="/">Icon with text</a>
+                </li>
+                <li>
+                    <a href="#" class="Tooltip" aria-label="Icon alone">
+                        <span data-icon="&#xe601;"></span>
+                        <span class="visuallyhidden">Icon alone</span>
+                    </a>
+                </li>
+            </ul> -->
+        </section>
 
     </div>
 
-    <script data-main="js/main.js" src="bower_components/requirejs/require.js"></script>
-  </body>
+    <script data-main="js/main.js" src="js/require.js"></script>
+
+</body>
 </html>
