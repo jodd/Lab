@@ -26,7 +26,7 @@
 
 icon-anchor = "\e600"
 icon-comment = "\e601"
-icon-menu = "\e602"
+icon-listbox = "\e602"
 icon-checkmark = "\e603"
 
 @font-face
@@ -42,7 +42,7 @@ icon-checkmark = "\e603"
 
 icon(glyph)
     font-family 'icon', sans-serif
-    content lookup('icon-' + glyph)
+    content lookup('icon-' + glyph) || glyph
     speak none
     font-style normal
     font-weight normal
@@ -55,7 +55,6 @@ icon(glyph)
 
 [data-icon]:before
     icon attr(data-icon)
+    margin-right 1rem
+    line-height 1
 
-
-// [href^="#"]:before
-//   @include icon("#")
