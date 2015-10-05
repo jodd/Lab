@@ -7,12 +7,13 @@ textcolor = #222
 bgcolor = hsl(0, 0, 90)
 lightblue = hsla(200, 60, 60, 0.2)
 darkblue = hsla(200, 60, 60, 0.8)
-darkgrey = hsl(0, 0, 80)
-lightgrey = hsl(0, 0, 60)
+darkgrey = hsl(0, 0, 60)
+lightgrey = hsl(0, 0, 80)
 
 @import 'helpers'
 @import 'icons'
 @import 'base'
+@import 'nav'
 @import 'placeholderLabel'
 @import 'tooltip'
 @import 'listbox'
@@ -23,7 +24,6 @@ lightgrey = hsl(0, 0, 60)
     padding 1em 2em
     width 80%
     max-width 1024px
-    min-height 100%
 
 /* Header
    -------------------------------------------------------------------------- */
@@ -57,7 +57,7 @@ form
     @extend .clearfix
 
     > div + div
-        margin 1em 0
+        margin 2rem 0
 
     fieldset
         float left
@@ -68,7 +68,7 @@ form
             margin-left 0
 
         > div + div
-            margin 1em 0
+            margin 2rem 0
 
 /* Anchors
    -------------------------------------------------------------------------- */

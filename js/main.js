@@ -15,11 +15,16 @@ require.config({
 require([
   'jquery',
   'listbox',
+  'nav',
   'placeholderLabel'
-], function ($, Listbox) {
+], function ($, Listbox, Nav) {
+
   "use strict";
 
   $(document).ready(function () {
+
+    var nav = new Nav(document.getElementsByClassName('nav-single')[0]);
+
     $('.PlaceholderLabel').placeholderLabel();
 
     $('select').each(function() {
