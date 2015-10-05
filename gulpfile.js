@@ -48,7 +48,7 @@ gulp.task('watch', function() {
     livereload.listen();
     // When dest changes, tell the browser to reload
     // gulp.watch([dest + '/**/*', '!' + src + '/styles/**/*']).on('change', livereload.changed);
-    gulp.watch([dest + '/css/**/*']).on('change', livereload.changed);
+    gulp.watch([dest + '/css/**/*', dest + '/js/*']).on('change', livereload.changed);
 });
 
 // Build
