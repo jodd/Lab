@@ -6,7 +6,7 @@
  * Hide visually and from screen readers:
  */
 
-.hidden {
+.hidden, [aria-hidden="true"] {
     display: none !important;
 }
 
@@ -73,3 +73,12 @@
         clear: both;
     }
 }
+
+// Add a clearfix() mixin since we dont want to @extend .clearix class
+clearfix()
+    &:before, &:after
+        content " "
+        display table
+
+    &:after
+        clear both
