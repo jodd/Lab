@@ -1,8 +1,6 @@
 # Lab
 
-[EDIT:] no more maintained (at the moment)
-
-The [page](http://jodd.net/lab) I use to test some stuff.
+The repo I use to test some stuff.
 
 ## Resources
 
